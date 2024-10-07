@@ -68,16 +68,7 @@ To get started with the DEWS application, follow the instructions below to set u
    - Open your web browser and navigate to `http://127.0.0.1:8000/` to access the application.
    - For the admin interface, go to `http://127.0.0.1:8000/admin/` and log in with the superuser credentials.
 
-### Testing with Postman
 
-Postman is used to test the RESTful APIs of the DEWS application.
-
-1. **Test API Endpoints:**
-   - Send HTTP requests to the backend endpoints to verify their functionality.
-   - Validate the server responses to ensure data correctness.
-   - Use Postman's debugging features to identify and resolve potential issues.
-   - Manage environments and variables to switch between development, test, and production configurations.
-   - Write automated tests to ensure existing functionalities are not affected by new changes.
 
 ## Machine Learning Predictions
 
