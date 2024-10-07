@@ -1,8 +1,6 @@
 # DEWS
 AI-based identification and support of at-risk students: A case study of the Moroccan education system
 
-
-
 ## Overview
 
 The DEWS (Dropout Early Warning System) application is developed by analyzing academic and demographic data to predict student dropouts after one or two years. It also provides advanced interactive dashboards for comprehensive data visualization, including school-specific insights. This repository contains the backend infrastructure, including machine learning models, ensuring efficient functionality and high performance.
@@ -10,19 +8,27 @@ The DEWS (Dropout Early Warning System) application is developed by analyzing ac
 ## Table of Contents
 
 1. [Getting Started](#getting-started)
-2. [Backend Setup](#backend-setup)
-3. [Machine Learning Predictions](#machine-learning-predictions)
-4. [Model Selection and Performance](#model-selection-and-performance)
+2. [Frontend Setup](#backend-setup)
+3. [Backend Setup](#backend-setup)
+4. [Machine Learning Predictions](#machine-learning-predictions)
+5. [Model Selection and Performance](#model-selection-and-performance)
+
+### Prerequisites & Instalation
+
+- Python 3.8 or higher
+- Postman
+
+
+# Frontend
+
+
+# Backend
 
 
 ## Getting Started
 
 To get started with the DEWS application, follow the instructions below to set up the backend and run the application.
 
-### Prerequisites
-
-- Python 3.8 or higher
-- Postman
 
 ### Installation
 
