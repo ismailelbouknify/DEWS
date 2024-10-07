@@ -5,7 +5,7 @@ AI-based identification and support of at-risk students: A case study of the Mor
 
 ## Overview
 
-The DEWS (Dropout Early Warning System) application is designed to predict student dropouts, provide interactive dashboards, and offer an AI assistant to aid in educational analysis. This repository contains the backend code necessary for the application, including machine learning models and server-side logic for the AI assistant.
+The DEWS (Dropout Early Warning System) application is developed by analyzing academic and demographic data to predict student dropouts after one or two years. It also provides advanced interactive dashboards for comprehensive data visualization, including school-specific insights. This repository contains the backend infrastructure, including machine learning models, ensuring efficient functionality and high performance.
 
 ## Table of Contents
 
@@ -25,13 +25,12 @@ To get started with the DEWS application, follow the instructions below to set u
 
 - Python 3.8 or higher
 - Postman
-- GPU (optional for AI assistant)
-
+- 
 ### Installation
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/mehdiarejdal/Backdews.git
+   git clone https://github.com/ismailelbouknify/DEWS.git
    cd Backdews
    ```
 
@@ -48,7 +47,7 @@ To get started with the DEWS application, follow the instructions below to set u
 
 ## Backend Setup
 
-The backend of the DEWS application handles API requests, predictions, and AI assistant functionalities.
+
 
 ### Running the Django Project
 
