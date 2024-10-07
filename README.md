@@ -23,7 +23,7 @@ To get started with the DEWS application, follow the instructions below to set u
 
 - Python 3.8 or higher
 - Postman
-- 
+
 ### Installation
 
 1. **Clone the repository:**
