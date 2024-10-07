@@ -89,28 +89,5 @@ The `Feature_engineering.py` script contains functions to transform raw data int
 
 ## Model Selection and Performance
 
-The application includes various models, including Baseline and Undersampling models. Below are the performance metrics:
-
-### After 1 Year
-
-| Metric      | Baseline (Class 0) | Baseline (Class 1) | Undersampling (Class 0) | Undersampling (Class 1) |
-|-------------|---------------------|--------------------|--------------------------|-------------------------|
-| Precision   | 0.83                | 0.66               | 0.89                     | 0.57                    |
-| Recall      | 0.87                | 0.58               | 0.74                     | 0.79                    |
-| F1-score    | 0.85                | 0.62               | 0.81                     | 0.66                    |
-| Accuracy    | 0.78                |                    | 0.75                     |                         |
-| Macro Avg   | 0.74                | 0.73               | 0.73                     | 0.76                    |
-| Weighted Avg| 0.78                | 0.78               | 0.79                     | 0.75                    |
-
-### After 2 Years
-
-| Metric      | Baseline (Class 0) | Baseline (Class 1) | Undersampling (Class 0) | Undersampling (Class 1) |
-|-------------|---------------------|--------------------|--------------------------|-------------------------|
-| Precision   | 0.92                | 0.48               | 0.92                     | 0.48                    |
-| Recall      | 0.58                | 0.89               | 0.59                     | 0.89                    |
-| F1-score    | 0.71                | 0.62               | 0.72                     | 0.62                    |
-| Accuracy    | 0.67                |                    | 0.68                     |                         |
-| Macro Avg   | 0.70                | 0.74               | 0.70                     | 0.74                    |
-| Weighted Avg| 0.79                | 0.67               | 0.79                     | 0.68                    |
-
+The application features a variety of models, including Baseline and Undersampling models for each level, enabling users to select their preferred model.
 
