@@ -13,9 +13,7 @@ The DEWS (Dropout Early Warning System) application is developed by analyzing ac
 2. [Backend Setup](#backend-setup)
 3. [Machine Learning Predictions](#machine-learning-predictions)
 4. [Model Selection and Performance](#model-selection-and-performance)
-5. [AI Assistant](#ai-assistant)
-6. [Contributing](#contributing)
-7. [License](#license)
+
 
 ## Getting Started
 
