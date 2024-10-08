@@ -25,7 +25,6 @@ To get started with the DEWS application, follow the instructions below to set u
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/ismailelbouknify/DEWS.git
-   cd Backdews
    ```
 
 2. **Create a virtual environment:**
