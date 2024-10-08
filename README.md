@@ -38,9 +38,9 @@ To get started with the DEWS application, follow the instructions below to set u
    ```
 
 
-## Data processing 
+## Data processing
 This section provides step-by-step instructions for running the data processing scripts. These scripts are responsible for cleaning, aggregating, and joining the data. Before proceeding, ensure that your environment is properly set up, with all required dependencies installed.
-### Running the script 
+### Running the script (cleaning, aggregating, and joining)
 
 1. **Run the Data Cleaning Script:**
 The Cleaning.py script is used to clean raw data. This script handles tasks such as removing duplicates, filling missing values, normalizing data formats, and any other data preparation tasks required for the analysis.
@@ -59,6 +59,58 @@ Once the data has been aggregated, you can run the Script_Join_data_middle.py sc
    ```bash
    python Dataset/Script_Join_data_middle.py migrate
    ```
+### Elasticsearch Database Setup
+
+This section outlines the steps for creating and storing your cleaned and joined data in an Elasticsearch database. The cleaned database will be used for visualization and dashboards, and the joined database will be used for inference and machine learning model predictions.
+
+#### Prerequisites
+Before proceeding, make sure you have the following installed and set up:
+
+Python Elasticsearch Client: Install the client using:
+   ```bash
+   pip install elasticsearch
+   ```
+
+#### Running the Database Creation Scripts
+1. Create the Cleaned Database for Visualization (Visualization and Dashboard)
+The createdbcleaneddata.py script is responsible for storing the cleaned data into Elasticsearch. This cleaned data is typically used for visualizations and dashboards.
+
+##### Steps to run the script:
+
+Make sure the Elasticsearch service is running.
+
+Run the createdbcleaneddata.py script to create the cleaned database:
+
+```bash
+python Dataset/createdbcleaneddata.py
+   ```
+
+2. Create the Joined Database for Inference (ML Models and Inference)
+The createdbinference.py script is used to store the joined data, which is essential for inference and running machine learning models. This joined data is typically used for predictions or advanced analytics.
+
+##### Steps to run the script:
+
+Ensure Elasticsearch is running.
+Run the createdbinference.py script to store the joined data for inference:
+
+``` bash
+python createdbinference.py
+```
+3. Verifying Data in Elasticsearch
+Once you’ve run the scripts, you can verify that the data has been correctly stored in Elasticsearch by using curl or by accessing the Elasticsearch API.
+
+To verify the cleaned data:
+
+``` bash
+curl -X GET "localhost:9200/cleaned_data/_search?pretty"
+```
+To verify the joined data for inference:
+
+```bash
+curl -X GET "localhost:9200/inference_data/_search?pretty"
+```
+You should see the documents you indexed in the Elasticsearch response.
+
 
 ## Frontend
 
