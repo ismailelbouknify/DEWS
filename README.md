@@ -123,6 +123,7 @@ npm install
 Once the dependencies are installed, you can start the development server with the following command:
 
 ```bash
+cd Frontend/
 npm start server
 ```
 This will launch the frontend interface, and you can access it in your browser at http://localhost:3000.
