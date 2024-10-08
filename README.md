@@ -13,10 +13,6 @@ The DEWS (Dropout Early Warning System) application is developed by analyzing ac
 4. [Machine Learning Predictions](#machine-learning-predictions)
 5. [Model Selection and Performance](#model-selection-and-performance)
 
-### Prerequisites & Instalation
-
-- Python 3.8 or higher
-- Postman
 
 
 # Frontend
