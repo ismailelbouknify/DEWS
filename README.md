@@ -13,7 +13,24 @@ The DEWS (Dropout Early Warning System) application is developed by analyzing ac
 4. [Machine Learning Predictions](#machine-learning-predictions)
 5. [Model Selection and Performance](#model-selection-and-performance)
 
+# Data processing 
 
+### Running the script 
+
+1. **Apply database migrations:**
+   ```bash
+   python Cleaning.py migrate
+   ```
+
+2. **Apply database migrations:**
+   ```bash
+   python Cleaning.py migrate
+   ```
+
+3. **Apply database migrations:**
+   ```bash
+   python Cleaning.py migrate
+   ```
 
 # Frontend
 
