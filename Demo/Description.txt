@@ -1,0 +1,1 @@
+This screen shows a demo of the project when you run it
