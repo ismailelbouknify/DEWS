@@ -219,9 +219,6 @@ DEWS_full/
 │   │   ├── Script_Join_data_middle.py
 │   │   └── createdbinference.py
 │   └── ...
-|
-├── Docker/                   # Docker-related files
-│   └── elasticsearch/        # Elasticsearch Docker setup files
 │
 ├── README.md                 # Project documentation
 └── requirements.txt          # Project dependencies
