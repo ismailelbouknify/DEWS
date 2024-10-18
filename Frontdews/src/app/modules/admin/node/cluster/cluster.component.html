@@ -1,0 +1,108 @@
+<div class="absolute inset-0 flex flex-col min-w-0 overflow-hidden">
+
+    <mat-drawer-container
+        class="flex-auto h-full bg-card dark:bg-transparent"
+        (backdropClick)="onBackdropClicked()">
+
+        <!-- Drawer -->
+        <mat-drawer
+        class="w-full sm:w-100 dark:bg-gray-900"
+        mode="side"
+        [opened]="isDrawerOpen"
+        [position]="'end'"
+        [disableClose]="true"
+        #matDrawer>
+        <router-outlet></router-outlet>
+        </mat-drawer>
+
+        <mat-drawer-content class="flex flex-col bg-gray-100 dark:bg-transparent">
+
+            <!-- Main -->
+            <div class="flex flex-col flex-auto">
+
+                <!-- Header -->
+                <div class="flex flex-col sm:flex-row items-start sm:items-center sm:justify-between p-6 sm:py-12 md:px-8 border-b bg-card dark:bg-transparent">
+                    <!-- Title -->
+                    <div>
+                        <div class="text-4xl font-extrabold tracking-tight leading-none">Cluster Manager</div>
+                       
+                    </div>
+                    <!-- Actions -->
+                    <div class="mt-4 sm:mt-0">
+                        
+                        <button
+                            mat-flat-button
+                            (click) = "openDialog()"
+                            [color]="'primary'">
+                            <mat-icon [svgIcon]="'heroicons_outline:plus'"></mat-icon>
+                            <span class="ml-2 mr-1">Add new</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Items list -->
+                <ng-container *ngIf="done">
+                    <div class="p-6 md:p-8 space-y-8">
+
+                        <ng-container *ngIf="clusters.length > 0">
+                            <div>
+                                <div
+                                    class="flex flex-wrap -m-2 mt-2">
+                                    <ng-container *ngFor="let cluster of clusters">
+                                        <div class="relative w-40 h-40 m-2 p-4 shadow rounded-2xl bg-card">
+                                            <a
+                                                class="absolute z-20 top-1.5 right-1.5 w-8 h-8 min-h-8"
+                                                (click)="toggleDrawer()" [routerLink]="['./details/', cluster.id]"
+                                                mat-icon-button>
+                                                <mat-icon
+                                                    class="icon-size-5"
+                                                    [svgIcon]="'heroicons_solid:information-circle'"></mat-icon> </a>
+                                           
+                                            <!-- <a
+                                                class="z-10 absolute inset-0 flex flex-col p-4 cursor-pointer"
+                                                [routerLink]="['/node/groups/details/', group.id]">-->
+                                                <div class="aspect-[9/6]">
+                                                    <div class="flex items-center justify-center h-full">
+                                                        <!-- Icon -->
+                                                        <mat-icon
+                                                            class="icon-size-14 text-hint opacity-50"
+                                                            [svgIcon]="'heroicons_solid:rectangle-group'"></mat-icon>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col flex-auto justify-center text-center text-sm font-medium">
+                                                    <div
+                                                        class="truncate"
+                                                        [matTooltip]="cluster.name">{{cluster?.name}}</div>
+                                                        <ng-container>
+                                                            <div class="text-secondary truncate">{{cluster?.node_count}} Nodes</div>
+                                                        </ng-container>
+                                                </div>
+                                            <!--</a>-->
+                                        </div>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </ng-container>
+
+
+
+                    </div>
+                </ng-container>
+
+                <!-- No items template 
+                <ng-template >
+                    <div class="flex flex-auto flex-col items-center justify-center bg-gray-100 dark:bg-transparent">
+                        <mat-icon
+                            class="icon-size-24"
+                            [svgIcon]="'heroicons_outline:folder-open'"></mat-icon>
+                        <div class="mt-4 text-2xl font-semibold tracking-tight text-secondary">There are no items!</div>
+                    </div>
+                </ng-template>-->
+
+            </div>
+
+        </mat-drawer-content>
+
+    </mat-drawer-container>
+
+</div>

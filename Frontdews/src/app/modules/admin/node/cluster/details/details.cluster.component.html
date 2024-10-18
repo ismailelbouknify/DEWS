@@ -1,0 +1,75 @@
+
+
+<div class="flex flex-col flex-auto p-6 md:p-8">
+
+    <!-- Close button -->
+    <div class="flex items-center justify-end">
+        <a
+            mat-icon-button
+            (click) = "closeDrawer()"
+            [routerLink]="['../../']">
+            <mat-icon [svgIcon]="'heroicons_outline:x-mark'"></mat-icon>
+        </a>
+    </div>
+
+    <!-- Preview 
+    <div class="mt-8 aspect-[9/6]">
+        <div class="flex items-center justify-center h-full border rounded-lg bg-gray-50 dark:bg-card">
+            <ng-container *ngIf="item.type === 'folder'">
+                <mat-icon
+                    class="icon-size-24 text-hint"
+                    [svgIcon]="'heroicons_outline:folder'"></mat-icon>
+            </ng-container>
+            <ng-container *ngIf="item.type !== 'folder'">
+                <mat-icon
+                    class="icon-size-24 text-hint"
+                    [svgIcon]="'heroicons_outline:document'"></mat-icon>
+            </ng-container>
+        </div>
+    </div>-->
+
+    <!-- Name & Type -->
+    <div class="flex flex-col items-start mt-8">
+        <div class="text-xl font-medium">{{cluster?.name}}</div>
+    </div>
+    <ng-container *ngIf="done">
+        <div class="text-lg font-medium mt-8">Information</div>
+        <div class="flex flex-col mt-4 border-t border-b divide-y font-medium">
+
+            <div class="flex items-center justify-between py-3">
+                <div class="text-secondary">Description</div>
+                <div>{{cluster?.description}}</div>
+            </div>
+            <div class="flex items-center justify-between py-3">
+                <div class="text-secondary">Created At</div>
+                <div>{{cluster?.created_at |  date:'dd/MM/yyyy'}}</div>
+            </div>
+            <div class="flex items-center justify-between py-3">
+                <div class="text-secondary">Modified At</div>
+                <div>{{cluster?.updated_at |  date:'dd/MM/yyyy'}}</div>
+            </div>
+            <div class="flex items-center justify-between py-3">
+                <div class="text-secondary">Created By</div>
+                <div>{{cluster?.createdBy}}</div>
+            </div>
+ 
+        </div>
+
+
+
+        <!-- Actions -->
+        <div class="grid grid-cols-2 gap-4 w-full mt-8">
+            <button
+                class="flex-auto"
+                mat-flat-button
+                [color]="'primary'">
+                Edit
+            </button>
+            <button
+                class="flex-auto"
+                mat-stroked-button>
+                Delete
+            </button>
+        </div>
+    </ng-container>
+</div>

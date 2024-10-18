@@ -1,0 +1,139 @@
+<div class="flex flex-col flex-auto min-w-0">
+    <!-- Header -->
+    <div class="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-6 sm:py-8 sm:px-10 border-b bg-card dark:bg-transparent">
+        <div class="flex-1 min-w-0">
+            <!-- Breadcrumbs  -->
+            <div class="flex flex-wrap items-center font-medium">
+                <div>
+                    <a class="whitespace-nowrap text-primary-500">Schools</a>
+                </div>
+                <div class="flex items-center ml-1 whitespace-nowrap">
+                    <mat-icon class="icon-size-5 text-secondary" [svgIcon]="'heroicons_mini:chevron-right'"></mat-icon>
+                    <a class="ml-1 text-primary-500"> Manage Schools </a>
+                </div>
+            </div>
+            <!-- Title -->
+            <div class="mt-2">
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+                    Manage Schools
+                </h2>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Main -->
+    <mat-tab-group class="sm:px-2" mat-stretch-tabs="false" [animationDuration]="'0'">
+        <!-- tabs -->
+        <!-- Schools -->
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <span class="inline-flex items-center space-x-2">
+                    <span class="">Schools</span>
+                    <span class="px-2 py-1 text-sm rounded-full bg-primary-100 text-on-primary-100">
+                        {{ allSchools.length }}
+                    </span>
+                </span>
+            </ng-template>
+            <!-- cards -->
+            <ng-template matTabContent>
+                <div class="flex flex-row items-center w-full justify-between">
+                    <!-- search -->
+                    <mat-form-field class="w-full sm:w-72" style="text-align: right;">
+                        <mat-icon matPrefix class="icon-size-5" [svgIcon]="'heroicons_solid:magnifying-glass'"></mat-icon>
+                        <input matInput (keyup)="applyFilter($event)" placeholder="Search by ..." #input>
+                    </mat-form-field>
+                    <!-- end search -->
+                </div>
+
+                <div class="grid p-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full min-w-0">
+                    <ng-container *ngFor="let school of filteredSchools">
+                        <div class="flex flex-col flex-auto items-center bg-card shadow rounded-2xl overflow-hidden">
+                            <!-- Avatar & Info -->
+                            <div class="flex flex-col flex-auto w-full p-8 text-center">
+                                <div (click)="navigateToSchoolsDetails(school.school_name)" class="w-32 cursor-pointer h-32 mx-auto rounded-full overflow-hidden">
+                                    <img class="w-full h-full object-cover" [src]="school.photo" />
+                                  </div>
+                                  <div (click)="navigateToSchoolsDetails(school.school_name)" class="mt-6 cursor-pointer font-medium">
+                                    {{ school.school_name }}
+                                  </div>
+                                <div class="text-secondary">
+                                    {{ school.address }}
+                                </div>
+                                <div class="text-secondary">
+                                    {{ school.students_count }} Students
+                                </div>
+                            </div>
+                            <!-- Email & Phone -->
+                            <div class="flex items-center w-full border-t divide-x">
+                                <a class="flex flex-auto items-center justify-center py-2 space-x-2" href="mailto:{{ school.email }}">
+                                    <mat-icon class="icon-size-5" [svgIcon]="'heroicons_outline:envelope'"></mat-icon>
+                                    <span>{{ school.email }}</span>
+                                </a>
+                                <a class="flex flex-auto items-center justify-center py-2 space-x-2" href="tel:{{ school.phone }}">
+                                    <mat-icon class="icon-size-5" [svgIcon]="'heroicons_outline:phone'"></mat-icon>
+                                    <span>{{ school.phone }}</span>
+                                </a>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </ng-template>
+        </mat-tab>
+
+        <!-- Add New School -->
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <span class="inline-flex items-center space-x-2">
+                    <span class="">Add New School</span>
+                </span>
+            </ng-template>
+            <!-- content -->
+            <ng-template matTabContent>
+                <form [formGroup]="newSchoolForm" (ngSubmit)="createNewSchool()" class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <mat-form-field appearance="fill">
+                            <mat-label>School Name</mat-label>
+                            <input matInput formControlName="name" />
+                            <mat-error *ngIf="newSchoolForm.get('name').hasError('required')">School name is required</mat-error>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Location</mat-label>
+                            <input matInput formControlName="location" />
+                            <mat-error *ngIf="newSchoolForm.get('location').hasError('required')">Location is required</mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Email</mat-label>
+                            <input matInput formControlName="email" type="email" />
+                            <mat-error *ngIf="newSchoolForm.get('email').hasError('required')">Email is required</mat-error>
+                            <mat-error *ngIf="newSchoolForm.get('email').hasError('email')">Enter a valid email</mat-error>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Phone</mat-label>
+                            <input matInput formControlName="phone" />
+                            <mat-error *ngIf="newSchoolForm.get('phone').hasError('required')">Phone is required</mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Photo</mat-label>
+                            <input type="file" matInput (change)="onFileChange($event)" />
+                        </mat-form-field>
+                        <div *ngIf="imagePreview" class="flex justify-center items-center">
+                            <img [src]="imagePreview" alt="Image Preview" class="w-32 h-32 rounded-full" />
+                        </div>
+                    </div>
+
+                    <button mat-raised-button color="primary" type="submit" [disabled]="isLoading || !newSchoolForm.valid">
+                        <ng-container *ngIf="isLoading; else addSchoolText">Creating...</ng-container>
+                        <ng-template #addSchoolText>Add School</ng-template>
+                    </button>
+                </form>
+            </ng-template>
+        </mat-tab>
+    </mat-tab-group>
+</div>

@@ -1,0 +1,93 @@
+<div class="flex flex-col flex-auto overflow-y-auto bg-card dark:bg-default">
+    <!-- Header -->
+    <div
+        class="flex flex-0 items-center h-18 px-6 border-b bg-gray-50 dark:bg-transparent"
+    >
+        <button mat-icon-button (click)="drawer.close()">
+            <mat-icon
+                [svgIcon]="'heroicons_outline:arrow-long-left'"
+            ></mat-icon>
+        </button>
+        <div class="ml-2 text-2xl font-semibold">Settings</div>
+    </div>
+
+    <div class="px-6">
+        <!-- Profile info -->
+        <div class="flex flex-col mt-8 mx-2">
+            <mat-form-field class="min-w-50">
+                <mat-label>Model</mat-label>
+                <mat-icon
+                    class="icon-size-5"
+                    matPrefix
+                    [svgIcon]="'mat_solid:model_training'"
+                ></mat-icon>
+
+                <mat-select [value]="'all'">
+                    <mat-option [value]="'all'">Latest Sonic AI </mat-option>
+                    <!-- <ng-container *ngFor="let role of allAvailableRoles"> -->
+                    <mat-option [value]="'1.2.3'">
+                        Gemini<span class="ml-auto"> (3.4) </span>
+                    </mat-option>
+                    <mat-option [value]="'fdsf'">
+                        OpenAI<span class="ml-auto"> (3.5) </span>
+                    </mat-option>
+                    <mat-option [value]="'fdsfssfs'">
+                        Model 3<span class="ml-auto"> (0.1.1) </span>
+                    </mat-option>
+                    <mat-option [value]="'fdsfsfdsfsdfs'">
+                        Model 4<span class="ml-auto"> (0.0.1) </span>
+                    </mat-option>
+                    <!-- </ng-container> -->
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Temperature</mat-label>
+                <mat-icon
+                    class="icon-size-5"
+                    matPrefix
+                    [svgIcon]="'heroicons_solid:fire'"
+                ></mat-icon>
+                <input matInput [value]="0.7" />
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Personal API Key</mat-label>
+                <mat-icon
+                    class="icon-size-5"
+                    matPrefix
+                    [svgIcon]="'heroicons_solid:key'"
+                ></mat-icon>
+                <input
+                    matInput
+                    placeholder="************"
+                    value="**************"
+                />
+            </mat-form-field>
+            <mat-form-field class="min-w-50">
+                <mat-label> History Auto Clear </mat-label>
+                <mat-icon
+                    class="icon-size-5"
+                    matPrefix
+                    [svgIcon]="'mat_solid:timer'"
+                ></mat-icon>
+
+                <mat-select [value]="'all'">
+                    <mat-option [value]="'all'"> Never </mat-option>
+                    <!-- <ng-container *ngFor="let role of allAvailableRoles"> -->
+                    <mat-option [value]="'1.2.3'"> Everyday </mat-option>
+                    <mat-option [value]="'fdsf'"> Every Week </mat-option>
+                    <mat-option [value]="'fdsfssfs'"> Every Month </mat-option>
+                    <mat-option [value]="'fdsfsfdsfsdfs'">
+                        Every Year
+                    </mat-option>
+                    <!-- </ng-container> -->
+                </mat-select>
+            </mat-form-field>
+            <div class="flex items-center justify-end mt-4">
+                <button (click)="drawer.close()" mat-button>Cancel</button>
+                <button class="ml-2" mat-flat-button [color]="'primary'">
+                    Save
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

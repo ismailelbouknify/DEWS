@@ -1,0 +1,58 @@
+<!-- Item loop -->
+<!-- <ng-container *ngFor="let mail of mails; let i = index; trackBy: trackByFn"> -->
+
+<!-- Item -->
+<a class="relative flex border-b  hover:bg-hover">
+
+    <!-- Item content -->
+    <div class="flex flex-col items-start justify-start w-full py-6 pr-4 pl-5 border-l-4 border-transparent"
+        [ngClass]="{'border-primary': true}">
+        <!-- 'bg-primary-50 dark:bg-black dark:bg-opacity-5': selectedMail && selectedMail.id === mail.id -->
+
+        <!-- Info -->
+        <div class="flex items-center w-full">
+            <!-- Sender name -->
+            <div class="mr-2 font-semibold truncate">
+                Title Of the action
+            </div>
+            <!-- Important indicator -->
+            <mat-icon class="mr-3 icon-size-4 text-red-500 dark:text-red-600"
+                [svgIcon]="'heroicons_solid:exclamation-circle'"></mat-icon>
+            <!-- Date -->
+            <div class="ml-auto text-md text-right whitespace-nowrap text-hint">
+                May 10, 4:43 PM
+            </div>
+        </div>
+
+        <!-- Subject -->
+        <div class="flex items-center w-full mt-1">
+            <span class="leading-4 truncate">
+                This is the system comment on the action
+            </span>
+            <!-- Indicators -->
+            <!-- <div
+                    class="flex ml-auto pl-2"
+                    *ngIf="(mail.attachments && mail.attachments.length > 0) || mail.starred">
+                
+                    <mat-icon
+                        class="flex justify-center icon-size-4"
+                        *ngIf="mail.attachments && mail.attachments.length > 0"
+                        [svgIcon]="'heroicons_solid:paper-clip'"></mat-icon>
+                 
+                    <mat-icon
+                        class="flex justify-center icon-size-4 ml-1 text-orange-500 dark:text-orange-400"
+                        *ngIf="mail.starred"
+                        [svgIcon]="'heroicons_solid:star'"></mat-icon>
+                </div> -->
+        </div>
+
+        <!-- Comment -->
+        <div class="mt-2 leading-normal line-clamp-2 text-secondary">
+            THe comment of the action by the user
+        </div>
+
+    </div>
+
+</a>
+
+<!-- </ng-container> -->

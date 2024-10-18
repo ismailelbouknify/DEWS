@@ -1,0 +1,44 @@
+<div class="flex flex-col  -m-6 " >
+
+    <!-- Header -->
+    <div class="flex flex-0 items-center justify-between h-16 pr-3 sm:pr-5 pl-6 sm:pl-8 bg-accent text-on-accent">
+        <div class="text-lg font-medium">Client</div>
+        <button
+            mat-icon-button
+            (click)="saveAndClose()"
+            [tabIndex]="-1">
+            <mat-icon
+                class="text-current"
+                [svgIcon]="'heroicons_outline:x-mark'"></mat-icon>
+        </button>
+        
+    </div>
+
+    <div class="bg-gray-100 p-6 dark:bg-gray-800">
+
+
+        <div class="prose prose-sm max-w-5xl">
+
+            
+
+            <div class="mt-4">
+                <ul>
+                    <li><b>Name:</b> {{client.name}}</li>
+                    <li><b>Email:</b> {{client.email}}</li>
+                    <li><b>Phone:</b> {{client.phone}}</li>
+                    <li><b>Adress:</b> {{client.adress}}</li>
+                    <li><b>Country:</b> {{client.country}}</li>
+                    <li><b>Organization:</b> {{client.organization}}</li>
+
+                </ul>
+            </div>
+
+                   
+        </div>
+       
+        
+</div>
+     
+
+       
+</div>

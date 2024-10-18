@@ -1,0 +1,25 @@
+.chart {
+  font-family: 'Arial', sans-serif;
+}
+
+.axis text {
+  font-size: 12px;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.line {
+  fill: none;
+  stroke: #ffab00;
+  stroke-width: 3;
+}
+
+.dot {
+  fill: #ffab00;
+  stroke: #fff;
+}

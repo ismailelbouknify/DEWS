@@ -1,0 +1,35 @@
+.custom-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.custom-column {
+  flex: 1;
+  margin-right: 10px; /* Add margin or adjust spacing as needed */
+}
+.mat-dialog-actions {
+  justify-content: flex-end;
+}
+
+
+
+.success {
+  --mdc-snackbar-container-color: #4BB543 !important;
+  --mdc-snackbar-supporting-text-color: white !important;
+  --mat-mdc-snack-bar-button-color: white !important;
+  --mat-snack-bar-button-color: white !important;
+  white-space: pre-wrap;
+  background:  white !important;
+
+}
+
+.faild {
+  --mdc-snackbar-container-color: #dc3545 !important;
+  --mdc-snackbar-supporting-text-color: white !important;
+  --mat-mdc-snack-bar-button-color: white !important;
+  --mat-snack-bar-button-color: white !important;
+  white-space: pre-wrap;
+  background:  white !important;
+
+}
+

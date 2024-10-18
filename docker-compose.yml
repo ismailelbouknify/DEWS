@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  # Elasticsearch service
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.15.2
+    container_name: es01
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false  # Disable security for easier setup in local dev
+    ports:
+      - "9200:9200"
+    networks:
+      - esnet
+
+  # Django Backend service
+  backend:
+    # build: ./BackendDews/backend_dews
+    image: dews-backend
+    container_name: django_backend
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./BackendDews/backend_dews:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - elasticsearch
+    environment:
+      - ELASTICSEARCH_URL=https://elasticsearch:9200
+    networks:
+      - esnet
+
+  # Angular Frontend service
+  frontend:
+    # build: ./Frontdews
+    image: dews-frontend
+    container_name: angular_frontend
+    volumes:
+      - ./Frontdews:/usr/src/app
+    ports:
+      - "4200:4200"
+    networks:
+      - esnet
+    depends_on:
+      - backend
+
+networks:
+  esnet:
+    driver: bridge

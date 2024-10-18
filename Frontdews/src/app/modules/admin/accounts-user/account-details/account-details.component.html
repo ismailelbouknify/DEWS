@@ -1,0 +1,258 @@
+<div class="absolute inset-0 flex flex-col min-w-0 overflow-hidden">
+    <!-- drawer -->
+    <mat-drawer-container class="flex-auto h-full bg-card dark:bg-transparent" (backdropClick)="onBackdropClicked()">
+        <!-- Drawer -->
+        <mat-drawer class="w-full sm:w-100 dark:bg-gray-900" [mode]="drawerMode" [opened]="false" [position]="'end'"
+            [disableClose]="false" #matDrawer>
+            <div *ngIf="selectedSensor" class="flex flex-col flex-auto p-6 md:p-8">
+                <!-- Close button -->
+                <div class="flex items-center justify-end">
+                    <a mat-icon-button (click)="closeMatDrawer()">
+                        <mat-icon [svgIcon]="'heroicons_outline:x-mark'"></mat-icon>
+                    </a>
+                </div>
+
+                <!-- Preview -->
+                <div *ngIf="false" class="mt-8 aspect-[9/6]">
+                    <div class="flex items-center justify-center h-full border rounded-lg bg-gray-50 dark:bg-card">
+                        <ng-container *ngIf="false">
+                            <mat-icon class="icon-size-24 text-hint" [svgIcon]="'heroicons_outline:folder'"></mat-icon>
+                        </ng-container>
+                        <ng-container>
+                            <mat-icon class="icon-size-24 text-hint"
+                                [svgIcon]="'heroicons_outline:document'"></mat-icon>
+                        </ng-container>
+                    </div>
+                </div>
+                <img *ngIf="true" class="mt-8 object-contain aspect-[9/6]" src="assets/logos/suricata.png"
+                    alt="SURICATA LOGO" />
+
+                <!-- Name & Type -->
+                <div class="flex flex-col items-start mt-8">
+                    <div class="text-xl font-medium">
+                        {{ selectedSensor.name }}
+                    </div>
+                    <div class="mt-1 px-1.5 rounded text-sm font-semibold leading-5 text-white"
+                        [class.bg-indigo-600]="true">
+                        {{ selectedSensor.service_id.toUpperCase() }}
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div class="text-lg font-medium mt-8">Description</div>
+                <div class="flex mt-2 border-t">
+                    <div class="py-3">
+                        <ng-container *ngIf="true">
+                            <div>description</div>
+                        </ng-container>
+                    </div>
+                </div>
+
+                <!-- Network Information -->
+                <div class="text-lg font-medium mt-8">Network Information</div>
+                <div class="flex flex-col mt-4 border-t border-b divide-y font-medium">
+                    <div class="flex items-center justify-between py-3">
+                        <div class="text-secondary">IP Address</div>
+                        <div>192.168.1.1</div>
+                    </div>
+                    <div class="flex items-center justify-between py-3">
+                        <div class="text-secondary">Version</div>
+                        <div>1.0.0</div>
+                    </div>
+                    <div class="flex items-center justify-between py-3">
+                        <div class="text-secondary">Cluster</div>
+                        <div>Cluster name</div>
+                    </div>
+                    <div class="flex items-center justify-between py-3">
+                        <div class="text-secondary">Node</div>
+                        <div>Node name</div>
+                    </div>
+                </div>
+
+                <!-- Integration Information -->
+                <div class="text-lg font-medium mt-8">
+                    Integration Information
+                </div>
+                <div class="flex flex-col mt-4 border-t border-b divide-y font-medium">
+                    <div class="flex items-center justify-between py-3">
+                        <div class="text-secondary">Created By</div>
+                        <div>created by</div>
+                    </div>
+                    <div class="flex items-center justify-between py-3">
+                        <div class="text-secondary">Created At</div>
+                        <div>created at</div>
+                    </div>
+                    <div class="flex items-center justify-between py-3">
+                        <div class="text-secondary">Modified At</div>
+                        <div>modified at</div>
+                    </div>
+                    <div class="flex items-center justify-between py-3">
+                        <div class="text-secondary">Accessed By</div>
+                        <div>13 users</div>
+                    </div>
+                </div>
+
+                <!-- Parameters -->
+                <div class="text-lg font-medium mt-8">Parameters</div>
+                <div class="flex flex-col mt-4 border-t border-b divide-y font-medium">
+                    <div class="flex items-center justify-between py-3">
+                        <div class="text-secondary">Memory</div>
+                        <div>4GB</div>
+                    </div>
+                    <div class="flex items-center justify-between py-3">
+                        <div class="text-secondary">CPU</div>
+                        <div>100%</div>
+                    </div>
+                    <div class="flex items-center justify-between py-3">
+                        <div class="text-secondary">Logs directory</div>
+                        <div>/var/log/suricata</div>
+                    </div>
+                    <div class="flex items-center justify-between py-3">
+                        <div class="text-secondary">Elasticsearch index</div>
+                        <div>suricata-1</div>
+                    </div>
+                </div>
+
+                <!-- History -->
+                <div class="text-lg font-medium mt-8">History</div>
+                <div class="flex flex-col mt-4 border-t border-b divide-y font-medium">
+                    <div class="flex items-center justify-between py-3">
+                        <div class="text-secondary">
+                            Turned on by Superuser ahmed
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <!-- <div class="grid grid-cols-2 gap-4 w-full mt-8">
+                    <button class="flex-auto" mat-flat-button [color]="'primary'">
+                        Download
+                    </button>
+                    <button class="flex-auto" mat-stroked-button>
+                        Delete
+                    </button>
+                </div> -->
+            </div>
+        </mat-drawer>
+
+        <mat-drawer-content class="flex flex-col bg-gray-100 dark:bg-transparent">
+            <!-- Header -->
+            <div
+                class="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-6 sm:py-8 sm:px-10 border-b bg-card dark:bg-transparent">
+                <div class="flex-1 min-w-0">
+                    <!-- Breadcrumbs  -->
+                    <div class="flex flex-wrap items-center font-medium">
+                        <div>
+                            <a class="whitespace-nowrap text-primary-500">Users</a>
+                        </div>
+                        <div class="flex items-center ml-1 whitespace-nowrap">
+                            <mat-icon class="icon-size-5 text-secondary"
+                                [svgIcon]="'heroicons_mini:chevron-right'"></mat-icon>
+                            <a routerLink="/users/accounts" class="ml-1 text-primary-500">
+                                Accounts
+                            </a>
+                        </div>
+                        <div class="flex items-center ml-1 whitespace-nowrap">
+                            <mat-icon class="icon-size-5 text-secondary"
+                                [svgIcon]="'heroicons_mini:chevron-right'"></mat-icon>
+                            <a class="ml-1 text-primary-500">
+                                Account Profile
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Title -->
+                    <div class="mt-2">
+                        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+                            {{ sonicUser.first_name }} {{ sonicUser.last_name }}
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <!-- Main -->
+
+            <div class="flex flex-auto overflow-hidden">
+                <div class="flex flex-col flex-auto overflow-hidden sm:overflow-y-auto">
+
+
+
+                    <mat-tab-group class="sm:px-2" mat-stretch-tabs="false" [animationDuration]="'0'">
+                        <!-- tabs -->
+                        <!-- Profile -->
+                        <mat-tab>
+                            <ng-template mat-tab-label>
+                                <span class="flex flex-row items-center space-x-2">
+                                    <mat-icon class="icon-size-5 text-secondary"
+                                        [svgIcon]="'mat_outline:person'"></mat-icon>
+                                    <span class="">Profile</span>
+                                </span>
+                            </ng-template>
+                            <ng-template matTabContent>
+                                <app-accounts-user-profile [sonicUser]="sonicUser"></app-accounts-user-profile>
+                            </ng-template>
+                        </mat-tab>
+                        <!-- Role | Permissions -->
+                        <mat-tab>
+                            <ng-template mat-tab-label>
+                                <span class="flex flex-row items-center space-x-2">
+                                    <mat-icon class="icon-size-5 text-secondary"
+                                        [svgIcon]="'mat_outline:perm_data_setting'"></mat-icon>
+                                    <span class=""> Role - Permissions </span>
+                                </span>
+                            </ng-template>
+                            <ng-template matTabContent>
+                                <app-accounts-user-roles-permissions [authPermissions]="authPermissions"
+                                    [editPermissions]="editPermissions" [viewPermissions]="viewPermissions"
+                                    [sonicUser]="sonicUser"></app-accounts-user-roles-permissions>
+                            </ng-template>
+                        </mat-tab>
+                        <!-- sensors -->
+                        <mat-tab>
+                            <ng-template mat-tab-label>
+                                <span class="flex flex-row items-center space-x-2">
+                                    <mat-icon class="icon-size-5 text-secondary"
+                                        [svgIcon]="'feather:server'"></mat-icon>
+                                    <span class="">
+                                        Sensors ({{ sonicUser.services.length }})
+                                    </span>
+                                </span>
+                            </ng-template>
+
+                            <ng-template matTabContent>
+
+
+                                <app-accounts-user-sensors (selectSensor)="selectSensor($event)"
+                                    [sonicUser]="sonicUser"></app-accounts-user-sensors>
+
+                            </ng-template>
+                        </mat-tab>
+                        <!-- Actions History -->
+                        <mat-tab>
+                            <ng-template mat-tab-label>
+                                <span class="flex flex-row items-center space-x-2">
+                                    <mat-icon class="icon-size-5 text-secondary"
+                                        [svgIcon]="'mat_outline:history'"></mat-icon>
+                                    <span class=""> Actions History </span>
+                                </span>
+                            </ng-template>
+                            <ng-template matTabContent>
+                                <app-accounts-user-history-actions></app-accounts-user-history-actions>
+                            </ng-template>
+                        </mat-tab>
+                        <!-- Settings -->
+                        <mat-tab>
+                            <ng-template mat-tab-label>
+                                <span class="flex flex-row items-center space-x-2">
+                                    <mat-icon class="icon-size-5 text-secondary"
+                                        [svgIcon]="'mat_outline:admin_panel_settings'"></mat-icon>
+                                    <span>Settings</span>
+                                </span>
+                            </ng-template>
+                            <ng-template matTabContent>
+                                <app-accounts-user-settings></app-accounts-user-settings>
+                            </ng-template>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
+            </div>
+        </mat-drawer-content>
+    </mat-drawer-container>

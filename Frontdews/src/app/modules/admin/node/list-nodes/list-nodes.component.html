@@ -1,0 +1,113 @@
+<div class="flex flex-col flex-auto min-w-0">
+
+    <!-- Header -->
+    <div class="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-6 sm:py-8 sm:px-10 border-b bg-card dark:bg-transparent">
+        <div class="flex-1 min-w-0">
+            <!-- Breadcrumbs  -->
+            <div class="flex flex-wrap items-center font-medium">
+                <div>
+                    <a class="whitespace-nowrap text-primary-500">Node</a>
+                </div>
+                <div class="flex items-center ml-1 whitespace-nowrap">
+                    <mat-icon
+                        class="icon-size-5 text-secondary"
+                        [svgIcon]="'heroicons_mini:chevron-right'"></mat-icon>
+                    <a class="ml-1 text-primary-500">Node Library</a>
+                </div>
+            </div>
+            <!-- Title -->
+            <div class="mt-2">
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+                    Node Library
+                </h2>
+            </div>
+            
+        </div>
+        <!-- Actions -->
+        <div class="mt-4 sm:mt-0">
+
+                <button
+                class=" min-h-8 h-8 lg:min-h-10 lg:h-10 mt-3 lg:mt-6"
+                mat-stroked-button
+                (click) = "addNew()"
+                [color]="'primary'">
+                <mat-icon [svgIcon]="'heroicons_outline:plus'"></mat-icon>
+                <span class="hidden lg:inline-flex">Create new</span>
+            </button>
+        </div>
+        
+    </div>
+    <div class="flex-auto p-1 sm:p-10">
+        <mat-form-field class="w-full sm:w-48 mr-4 " style="vertical-align: top;">
+        <mat-select [value]="0" (selectionChange)="applyFilterByType($event)">
+            <mat-option [value]="0">All</mat-option>
+            <mat-option [value]="1">Search Node</mat-option>
+            <mat-option [value]="2">Detection Node</mat-option>
+
+        </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="w-full sm:w-72 mt-0" style="text-align: right;">
+            <mat-icon
+            matPrefix
+            class="icon-size-5"
+            [svgIcon]="'heroicons_solid:magnifying-glass'"></mat-icon>
+
+            <input matInput (keyup)="applyFilter($event)" placeholder="Search by ..." #input>
+        </mat-form-field>
+
+        <div class="mat-elevation-z2">
+            <table mat-table [dataSource]="dataSource" matSort>
+        
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="cluster">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Cluster</th>
+                <td mat-cell *matCellDef="let element"> {{element.cluster.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ip">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>IP</th>
+                <td mat-cell *matCellDef="let element"> {{element.ip}} </td>
+            </ng-container>
+
+        
+            <ng-container matColumnDef="created_at">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Created date </th>
+                <td mat-cell *matCellDef="let element"> {{element.created_at}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="node_type">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Node type </th>
+                <td mat-cell *matCellDef="let element"> 
+                    <ng-container *ngIf="element.node_type == nodeType.SEARCH">
+                        <div class="py-0.5 inline-block px-3 rounded-full text-sm font-semibold text-blue-800 bg-blue-100 dark:text-blue-50 dark:bg-blue-500">Search Node</div>
+                    </ng-container> 
+                    <ng-container *ngIf="element.node_type == nodeType.DETECTION">
+                        <div class="py-0.5 inline-block px-3 rounded-full text-sm font-semibold text-amber-800 bg-amber-100 dark:text-amber-50 dark:bg-amber-500">Detection Node</div>
+                    </ng-container> 
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions" >
+                <th mat-header-cell *matHeaderCellDef> Actions </th>
+                <td mat-cell *matCellDef="let element"> 
+                    <button mat-icon-button color="primary" (click) = "openDetail(element)">
+                        <mat-icon [svgIcon]="'heroicons_outline:information-circle'"></mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                        showFirstLastButtons
+                        aria-label="Select page of periodic elements">
+            </mat-paginator>
+        </div>
+    </div>
+</div>

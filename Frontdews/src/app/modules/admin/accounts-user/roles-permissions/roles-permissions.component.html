@@ -1,0 +1,92 @@
+<div class="grid mt-6 grid-cols-3">
+    <div class="w-full flex flex-col items-start mx-auto">
+        <h2 class="text-3xl text-left underline underline-offset-4 font-semibold">
+            {{ sonicUser.role_details.name }}
+        </h2>
+        <p class="mt-4 mr-8 text-xl">
+            {{ sonicUser.role_details.description }}
+        </p>
+    </div>
+    <div class="relative max-h-80 overflow-y-auto col-span-2">
+        <!-- auth -->
+        <div class="relative">
+            <div
+                class="z-10 sticky top-0 -mt-px px-6 py-1 md:px-8 border-t border-b font-medium uppercase text-secondary bg-gray-50 dark:bg-gray-900">
+                Auth
+            </div>
+            <ng-container *ngFor="
+                    let permission of authPermissions;
+                   
+                ">
+                <div
+                    class="z-20 flex items-center bg-white hover:bg-gray-100 px-4 py-4 md:px-4 cursor-pointer border-b">
+                    <div
+                        class="flex flex-0 bg-gray-50 items-center w-10 h-10 rounded-full justify-center overflow-hidden">
+                        <mat-icon class="icon-size-5" matPrefix [svgIcon]="'feather:key'"></mat-icon>
+                    </div>
+                    <div class="min-w-0 ml-4">
+                        <div class="font-medium leading-5 truncate">
+                            {{ permission.name }}
+                        </div>
+                        <div class="leading-5 truncate text-secondary">
+                            {{ permission.description }}
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+        <!-- edit -->
+        <div class="relative">
+            <div
+                class="z-10 sticky top-0 -mt-px px-6 py-1 md:px-8 border-t border-b font-medium uppercase text-secondary bg-gray-50 dark:bg-gray-900">
+                Edit
+            </div>
+            <ng-container *ngFor="
+                    let permission of editPermissions;
+                 
+                ">
+                <div
+                    class="z-20 flex items-center bg-white hover:bg-gray-100 px-4 py-4 md:px-4 cursor-pointer border-b">
+                    <div
+                        class="flex flex-0 bg-gray-50 items-center justify-center w-10 h-10 rounded-full overflow-hidden">
+                        <mat-icon class="icon-size-5" matPrefix [svgIcon]="'mat_outline:edit'"></mat-icon>
+                    </div>
+                    <div class="min-w-0 ml-4">
+                        <div class="font-medium leading-5 truncate">
+                            {{ permission.name }}
+                        </div>
+                        <div class="leading-5 truncate text-secondary">
+                            {{ permission.description }}
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+        <!-- edit -->
+        <div class="relative">
+            <div
+                class="z-10 sticky top-0 -mt-px px-6 py-1 md:px-8 border-t border-b font-medium uppercase text-secondary bg-gray-50 dark:bg-gray-900">
+                View
+            </div>
+            <ng-container *ngFor="
+                    let permission of viewPermissions;
+                ">
+                <div
+                    class="z-20 flex items-center bg-white hover:bg-gray-100 px-4 py-4 md:px-4 cursor-pointer border-b">
+                    <div
+                        class="flex flex-0 bg-gray-50 items-center justify-center w-10 h-10 rounded-full overflow-hidden">
+                        <mat-icon class="icon-size-5" matPrefix [svgIcon]="'feather:eye'"></mat-icon>
+                    </div>
+                    <div class="min-w-0 ml-4">
+                        <div class="font-medium leading-5 truncate">
+                            {{ permission.name }}
+                        </div>
+                        <div class="leading-5 truncate text-secondary">
+                            {{ permission.description }}
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

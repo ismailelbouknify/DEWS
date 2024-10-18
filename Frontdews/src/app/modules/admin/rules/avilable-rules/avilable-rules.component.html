@@ -1,0 +1,190 @@
+<div class="flex flex-col flex-auto min-w-0">
+    <!-- Header -->
+    <div
+        class="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-6 sm:py-8 sm:px-10 border-b bg-card dark:bg-transparent"
+    >
+        <div class="flex-1 min-w-0">
+            <!-- Breadcrumbs  -->
+            <div class="flex flex-wrap items-center font-medium">
+                <div>
+                    <a class="whitespace-nowrap text-primary-500">Student List </a>
+                </div>
+                <!-- <div class="flex items-center ml-1 whitespace-nowrap">
+                    <mat-icon
+                        class="icon-size-5 text-secondary"
+                        [svgIcon]="'heroicons_mini:chevron-right'"></mat-icon>
+                    <a class="ml-1 text-primary-500">Add new</a>
+                </div> -->
+            </div>
+            <!-- Title -->
+            <div class="mt-2">
+                <h2
+                    class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate"
+                >
+                    Students
+                </h2>
+            </div>
+        </div>
+    </div>
+    <!-- Main -->
+    <div class="flex-auto p-6 sm:p-10">
+        <div class="grid grid-cols-1 w-full mt-8">
+            <!-- Recent transactions table -->
+            <div
+                class="xl:col-span-2 flex flex-col flex-auto bg-card shadow rounded-2xl overflow-hidden"
+            >
+                <div class="p-6">
+                    <div
+                        class="mr-4 text-lg font-medium tracking-tight leading-6 truncate"
+                    >
+                        Current Rules
+                    </div>
+                </div>
+                <div class="overflow-x-auto mx-6">
+                    <table
+                        class="w-full bg-transparent"
+                        mat-table
+                        matSort
+                        [dataSource]="rulesDataSource"
+                        [trackBy]="trackByFn"
+                        #recentTransactionsTable
+                    >
+                        <!-- Transaction ID -->
+                        <ng-container matColumnDef="id_eleve">
+                            <th
+                                mat-header-cell
+                                mat-sort-header
+                                *matHeaderCellDef
+                            >
+                                id_eleve
+                            </th>
+                            <td mat-cell *matCellDef="let transaction">
+                                <span
+                                    class="pr-6 font-medium text-sm text-secondary whitespace-nowrap"
+                                >
+                                    {{ transaction.id_eleve }}
+                                </span>
+                            </td>
+                        </ng-container>
+
+                        <!-- Date -->
+                        <ng-container matColumnDef="Level">
+                            <th
+                                mat-header-cell
+                                mat-sort-header
+                                *matHeaderCellDef
+                            >
+                                Level
+                            </th>
+                            <td mat-cell *matCellDef="let transaction">
+                                <span class="pr-6 whitespace-nowrap">
+                                    {{
+                                        transaction.Level
+                                    }}
+                                </span>
+                            </td>
+                        </ng-container>
+
+                        <!-- Name -->
+                        <ng-container matColumnDef="id_annee">
+                            <th
+                                mat-header-cell
+                                mat-sort-header
+                                *matHeaderCellDef
+                            >
+                                <mat-icon
+                                    [svgIcon]="'heroicons_outline:credit-card'"
+                                ></mat-icon>
+                                &#160;id_annee
+                            </th>
+                            <td mat-cell *matCellDef="let transaction">
+                                <span class="pr-6 whitespace-nowrap">
+                                    {{ transaction.id_annee }}
+                                </span>
+                            </td>
+                        </ng-container>
+
+                        <!-- Amount -->
+                        <ng-container matColumnDef="MoyenneGen_i1">
+                            <th
+                                mat-header-cell
+                                mat-sort-header
+                                *matHeaderCellDef
+                            >
+                                <mat-icon
+                                    [svgIcon]="'heroicons_solid:shield-check'"
+                                ></mat-icon>
+                                &#160;MoyenneGen_i1
+                            </th>
+                            <td mat-cell *matCellDef="let transaction">
+                                <span
+                                    class="pr-6 font-medium whitespace-nowrap"
+                                >
+                                    {{ transaction.MoyenneGen_i1 }}
+                                </span>
+                            </td>
+                        </ng-container>
+
+                        <!-- Status -->
+                        <ng-container matColumnDef="status">
+                            <th
+                                mat-header-cell
+                                mat-sort-header
+                                *matHeaderCellDef
+                            >
+                                Actions
+                            </th>
+                            <td mat-cell *matCellDef="let transaction">
+                                <span
+                                    class="inline-flex items-center font-bold text-xs px-2.5 py-0.5 rounded-full tracking-wide uppercase"
+                                    [ngClass]="
+                                        'bg-green-200 text-green-800 dark:bg-green-600 dark:text-green-50'
+                                    "
+                                >
+                                    <span
+                                        class="leading-relaxed whitespace-nowrap"
+                                    >
+                                        Add Rule
+                                    </span>
+                                </span>
+                            </td>
+                        </ng-container>
+
+                        <!-- Footer -->
+                        <ng-container matColumnDef="recentOrdersTableFooter">
+                            <td
+                                class="py-6 px-0 border-0"
+                                mat-footer-cell
+                                *matFooterCellDef
+                                colspan="6"
+                            >
+                                <button mat-stroked-button>
+                                    See all Avilable Rules
+                                </button>
+                            </td>
+                        </ng-container>
+
+                        <tr
+                            mat-header-row
+                            *matHeaderRowDef="rulesTableColumns"
+                        ></tr>
+                        <tr
+                            class="order-row h-16"
+                            mat-row
+                            *matRowDef="let row; columns: rulesTableColumns"
+                        ></tr>
+                        <tr
+                            class="h-16 border-0"
+                            mat-footer-row
+                            *matFooterRowDef="['recentOrdersTableFooter']"
+                        ></tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- CONTENT GOES HERE 
+        <div class="h-400 min-h-400 max-h-400 border-2 border-dashed border-gray-300 rounded-2xl"></div>
+-->
+        </div>
+    </div>
+</div>

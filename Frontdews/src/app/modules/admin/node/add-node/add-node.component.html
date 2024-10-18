@@ -1,0 +1,239 @@
+<div class="flex flex-col flex-auto min-w-0">
+
+    <!-- Header -->
+    <div class="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-6 sm:py-8 sm:px-10 border-b bg-card dark:bg-transparent">
+        <div class="flex-1 min-w-0">
+            <!-- Breadcrumbs  -->
+            <div class="flex flex-wrap items-center font-medium">
+                <div>
+                    <a class="whitespace-nowrap text-primary-500">Node</a>
+                </div>
+                <div class="flex items-center ml-1 whitespace-nowrap">
+                    <mat-icon
+                        class="icon-size-5 text-secondary"
+                        [svgIcon]="'heroicons_mini:chevron-right'"></mat-icon>
+                    <a class="ml-1 text-primary-500">Add new</a>
+                </div>
+            </div>
+            <!-- Title -->
+            <div class="mt-2">
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+                    Choose how 
+                </h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex-auto p-1 sm:p-10">
+
+        <div class="max-w-3xl">
+            <form class="p-4 bg-card shadow rounded overflow-hidden" [formGroup]="createForm">
+            <mat-horizontal-stepper [linear]="true" #horizontalStepper>
+            
+            <mat-step [formGroupName]="'step0'" [stepControl]="createForm.get('step0')" #horizontalStepperStep0>
+                <ng-template matStepLabel>Client</ng-template>
+                    <div class="flex">
+                        <mat-form-field class="flex-auto">
+                        <mat-label>Client</mat-label>
+
+                        <mat-select [placeholder]="'Select client'" formControlName="client" >
+                            <mat-option *ngFor="let client of clients" [value]="client">{{ client.name }}</mat-option>
+                        </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="flex flex-col flex-auto" *ngIf="selectedClient">
+                        <div class="grid grid-cols-12 gap-x-1 mt-6">
+                            <div class="col-span-4 font-medium text-md">Name:</div>
+                            <div class="col-span-8 font-medium text-md text-left text-secondary">{{selectedClient?.name}}</div>
+                                  
+                            <div class="col-span-12 my-2 "></div>
+
+                            <div class="col-span-4 font-medium text-md">Organization:</div>
+                            <div class="col-span-8 font-medium text-md text-left text-secondary">{{selectedClient?.organization}}</div>
+                            
+                            <div class="col-span-12 my-2 "></div>
+
+                            <div class="col-span-4 font-medium text-md">Email:</div>
+                            <div class="col-span-8 font-medium text-md text-left text-secondary">{{selectedClient?.email}}</div>
+                            
+                            <div class="col-span-12 my-2 "></div>
+
+
+                        </div>
+                    </div>
+
+                        
+                    <div class="flex justify-end">
+                        <button
+                            class="px-8"
+                            mat-flat-button
+                            [color]="'primary'"
+                            [disabled]="horizontalStepperStep0.stepControl.pristine || horizontalStepperStep0.stepControl.invalid"
+                            type="button"
+                            matStepperNext>
+                            Next
+                        </button>
+                    </div>
+            </mat-step>
+
+            <mat-step [formGroupName]="'step1'" [stepControl]="createForm.get('step1')" #horizontalStepperStep1>
+                <ng-template matStepLabel>Template</ng-template>
+                    <div class="flex">
+                        <mat-form-field class="flex-auto">
+                        <mat-label>Template</mat-label>
+
+                        <mat-select [placeholder]="'Select template'" formControlName="template" >
+                            <mat-option *ngFor="let template of templates" [value]="template">{{ template.name }}</mat-option>
+                        </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="flex flex-col flex-auto" *ngIf="selectedTemplate">
+                        <div class="grid grid-cols-12 gap-x-1 mt-4">
+                            <div class="col-span-4 font-medium text-md">Name:</div>
+                            <div class="col-span-8 font-medium text-md text-left text-secondary">{{selectedTemplate?.name}}</div>
+                                  
+                            <div class="col-span-12 my-2 "></div>
+
+                            <div class="col-span-4 font-medium text-md">Version:</div>
+                            <div class="col-span-8 font-medium text-md text-left text-secondary">{{selectedTemplate?.version}}</div>
+                            
+                            <div class="col-span-12 my-2 "></div>
+
+                            <div class="col-span-4 font-medium text-md">Software:</div>
+                            <div class="col-span-8 font-medium text-md text-left text-secondary">{{selectedTemplate?.software.name}}</div>
+                            
+                            <div class="col-span-12 my-2 "></div>
+
+                            <div class="col-span-4 font-medium text-md">Hardware:</div>
+                            <div class="col-span-8 font-medium text-md text-left text-secondary">{{selectedTemplate?.hardware.name}}</div>
+                            
+                            <div class="col-span-12 my-2 "></div>
+
+                        </div>
+                    </div>
+    
+                    <div class="flex justify-end">
+                        <button
+                        class="px-8 mr-2"
+                        mat-flat-button
+                        [color]="'accent'"
+                        type="button"
+                        matStepperPrevious>
+                        Back
+                        </button>
+                        <button
+                            class="px-8"
+                            mat-flat-button
+                            [color]="'primary'"
+                            [disabled]="horizontalStepperStep1.stepControl.pristine || horizontalStepperStep1.stepControl.invalid"
+                            type="button"
+                            matStepperNext>
+                            Next
+                        </button>
+                    </div>
+            </mat-step>
+
+            <mat-step [formGroupName]="'step2'" [stepControl]="createForm.get('step2')" #horizontalStepperStep2>
+                <ng-template matStepLabel>Basic information</ng-template>
+                
+                <!-- Node Type  -->
+                <div class="flex-auto">
+                    <div class="flex flex-col mb-4">
+                        <span class="font-semibold mb-0">Node type</span>
+                        <mat-radio-group class="flex flex-row" [color]="'primary'" formControlName="node_type">
+                            <mat-radio-button class="mr-2" [value]="1"></mat-radio-button>
+                            <mat-radio-button class="mr-2" [value]="2">Detection Node</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>         
+
+                <!-- Cluster  -->
+                 <div class="flex">
+                    <mat-form-field class="flex-auto">
+                    <mat-label>Cluster</mat-label>
+
+                    <mat-select [placeholder]="'Select the Cluster'" formControlName="cluster" >
+                        <mat-option *ngFor="let cluster of clusters" [value]="cluster">{{ cluster.name }}</mat-option>
+                         <!-- <footer>
+                            <button mat-button>Add new</button>
+                        </footer>-->
+                
+                    </mat-select>
+                    </mat-form-field>
+                </div>
+             
+                
+
+                <!-- Name -->
+                <div class="flex flex-col gt-xs:flex-row">
+                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                        <mat-label>Name</mat-label>
+                        <input matInput [placeholder]="'Name'" formControlName="name" required>
+                    </mat-form-field>
+                </div>
+
+                <!-- Description -->
+                <div class="flex">
+                    <mat-form-field class="flex-auto" >
+                        <mat-label>Description</mat-label>
+                        <textarea matInput [rows]="2" [placeholder]="'Description'" formControlName="description" required></textarea>
+                    </mat-form-field>
+                </div>
+
+                <!-- Serial Number -->
+                <div class="flex flex-col gt-xs:flex-row">
+                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                        <mat-label>Serial Number</mat-label>
+                        <input matInput [placeholder]="'Serial Number'" formControlName="serial_number" required>
+                    </mat-form-field>
+                </div>
+
+                <!-- IP -->
+                <div class="flex">
+                    <mat-form-field class="flex-auto">
+                        <mat-label>IP</mat-label>
+                        <input matInput [placeholder]="'0.0.0.0'" formControlName="ip" pattern="[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" required>
+                    </mat-form-field>
+                </div>
+
+                <!-- Hostname -->
+                <div class="flex">
+                    <mat-form-field class="flex-auto">
+                        <mat-label>Hostname</mat-label>
+                        <input matInput [placeholder]="'info.example.com'" formControlName="hostname" required>
+                    </mat-form-field>
+                </div>
+
+            
+            
+                <div class="flex justify-end">
+                    <button
+                        class="px-8 mr-2"
+                        mat-flat-button
+                        [color]="'accent'"
+                        type="button"
+                        matStepperPrevious>
+                        Back
+                    </button>
+                    <button
+                        class="px-8"
+                        mat-flat-button
+                        [color]="'primary'"
+                        (click) = "onSubmit()"
+                        [disabled]="horizontalStepperStep2.stepControl.pristine || horizontalStepperStep2.stepControl.invalid"
+                        type="button"
+                        matStepperNext>
+                        Next
+                    </button>
+                </div>
+            </mat-step>
+
+
+
+        </mat-horizontal-stepper>
+        </form>
+    </div>
+    </div>
+
+</div>

@@ -1,0 +1,116 @@
+<ng-container *ngIf="sonicUser.clusters.length > 0">
+    <div class="p-6 md:p-8 space-y-8">
+        <!-- Clusters -->
+        <div>
+            <div class="font-medium">Clusters</div>
+            <div class="flex flex-wrap -m-2 mt-2">
+                <ng-container *ngFor="let cluster of sonicUser.clusters_details; trackBy:trackByFn">
+                    <div class="relative w-40 h-40 m-2 p-4 shadow rounded-2xl bg-card">
+                        <a class="absolute z-20 top-1.5 right-1.5 w-8 h-8 min-h-8" (click)="$event.preventDefault()"
+                            [routerLink]="['./details/', cluster.id]" mat-icon-button>
+                            <mat-icon class="icon-size-5" [svgIcon]="'heroicons_solid:information-circle'"></mat-icon>
+                        </a>
+                        <a class="z-10 absolute inset-0 flex flex-col p-4 cursor-pointer"
+                            [routerLink]="['/users/accounts/', cluster.id]">
+                            <div class="aspect-[9/6]">
+                                <div class="flex items-center justify-center h-full">
+                                    <!-- Icon -->
+                                    <mat-icon class="icon-size-14 text-hint opacity-50"
+                                        [svgIcon]="'feather:server'"></mat-icon>
+                                </div>
+                            </div>
+                            <div class="flex flex-col flex-auto justify-center text-center text-sm font-medium">
+                                <div class="truncate" [matTooltip]="cluster.name">
+                                    {{cluster.name}}
+                                </div>
+                                <ng-container *ngIf="cluster.cluster_id">
+                                    <div class="text-secondary truncate">{{cluster.cluster_id}}
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </a>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+
+        <!-- Nodes -->
+        <ng-container *ngIf="sonicUser.nodes.length > 0">
+            <div>
+                <div class="font-medium">Nodes</div>
+                <div class="flex flex-wrap -m-2 mt-2">
+                    <ng-container *ngFor="let node of sonicUser.nodes_details; trackBy:trackByFn">
+                        <a class="flex flex-col w-40 h-40 m-2 p-4 shadow rounded-2xl cursor-pointer bg-card"
+                            [routerLink]="['./details/', node.node_id]">
+                            <div class="aspect-[9/6]">
+                                <div class="flex items-center justify-center h-full">
+
+                                    <div class="relative">
+                                        <mat-icon class="icon-size-14 text-hint opacity-50"
+                                            [svgIcon]="'mat_solid:sd_storage'"></mat-icon>
+                                        <div class="absolute left-0 bottom-0 px-1.5 rounded text-sm font-semibold leading-5 text-white"
+                                            [class.bg-red-600]="node.node_type === 'Compute'"
+                                            [class.bg-blue-600]="node.node_type === 'Storage'"
+                                            [class.bg-green-600]="node.node_type === 'XLS'"
+                                            [class.bg-gray-600]="node.node_type === 'TXT'"
+                                            [class.bg-amber-600]="node.node_type === 'JPG'">
+                                            {{node.node_type.toUpperCase()}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex flex-col flex-auto justify-center text-center text-sm font-medium">
+                                <div class="truncate" [matTooltip]="node.node_name">
+                                    {{node.node_name}}
+                                </div>
+                                <ng-container *ngIf="node.ip">
+                                    <div class="text-secondary truncate">{{node.ip}}</div>
+                                </ng-container>
+                            </div>
+                        </a>
+                    </ng-container>
+                </div>
+            </div>
+        </ng-container>
+
+        <!-- Sensors -->
+        <ng-container *ngIf="sonicUser.services.length > 0">
+            <div>
+                <div class="font-medium">Sensors</div>
+                <div class="flex flex-wrap -m-2 mt-2">
+                    <ng-container *ngFor="let service of sonicUser.services_details; trackBy:trackByFn">
+                        <div class="flex flex-col w-40 h-40 m-2 p-4 shadow rounded-2xl cursor-pointer bg-card"
+                            (click)="onSelectSensor(service)">
+                            <div class="aspect-[9/6]">
+                                <div class="flex items-center justify-center h-full">
+
+                                    <div class="relative">
+                                        <mat-icon class="icon-size-14 text-green-500 opacity-50"
+                                            [svgIcon]="'mat_solid:power_settings_new'"></mat-icon>
+                                        <div class="absolute left-0 bottom-0 px-1.5 rounded text-sm font-semibold leading-5 text-white"
+                                            [class.bg-red-600]="service.name === 'Sonic Engine'"
+                                            [class.bg-blue-600]="service.name === 'Portainer'"
+                                            [class.bg-orange-600]="service.name === 'Suricata'"
+                                            [class.bg-gray-600]="service.name === 'TXT'"
+                                            [class.bg-amber-600]="service.name === 'JPG'">
+                                            {{service.name.toUpperCase()}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex flex-col flex-auto justify-center text-center text-sm font-medium">
+                                <div class="truncate" [matTooltip]="service.name">
+                                    {{service.name}}
+                                </div>
+                                <ng-container *ngIf="service.version">
+                                    <div class="text-secondary truncate">{{service.version}}
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</ng-container>

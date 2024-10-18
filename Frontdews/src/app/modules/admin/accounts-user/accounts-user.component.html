@@ -1,0 +1,199 @@
+<div class="flex flex-col flex-auto min-w-0">
+    <!-- Header -->
+    <div
+        class="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-6 sm:py-8 sm:px-10 border-b bg-card dark:bg-transparent">
+        <div class="flex-1 min-w-0">
+            <!-- Breadcrumbs  -->
+            <div class="flex flex-wrap items-center font-medium">
+                <div>
+                    <a class="whitespace-nowrap text-primary-500">Users</a>
+                </div>
+                <div class="flex items-center ml-1 whitespace-nowrap">
+                    <mat-icon class="icon-size-5 text-secondary" [svgIcon]="'heroicons_mini:chevron-right'"></mat-icon>
+                    <a class="ml-1 text-primary-500"> Accounts </a>
+                </div>
+            </div>
+            <!-- Title -->
+            <div class="mt-2">
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+                    Manage Sonic Users
+                </h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main -->
+    <mat-tab-group class="sm:px-2" mat-stretch-tabs="false" [animationDuration]="'0'">
+        <!-- tabs -->
+        <!-- Sonic Users -->
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <span class="inline-flex items-center space-x-2">
+                    <span class="">Accounts</span>
+                    <span class="px-2 py-1 text-sm rounded-full bg-primary-100 text-on-primary-100">
+                        {{ allSonicUsers.length }}
+                    </span>
+                </span>
+            </ng-template>
+            <!-- cards -->
+            <ng-template matTabContent>
+
+                <div class="flex flex-row items-center w-full justify-between">
+                    <!-- search -->
+                    <mat-form-field class="w-full sm:w-72" style="text-align: right;">
+                        <mat-icon matPrefix class="icon-size-5"
+                            [svgIcon]="'heroicons_solid:magnifying-glass'"></mat-icon>
+
+                        <input matInput (keyup)="applyFilter($event)" placeholder="Search by ..." #input>
+                    </mat-form-field>
+                    <!-- end search -->
+
+                    <!-- slect role -->
+                    <div class="flex flex-col ">
+                        <mat-form-field class="min-w-50">
+
+                            <mat-select #roleSelect (selectionChange)="filterByRole(roleSelect.value)" [value]="'all'">
+                                <mat-option [value]="'all'">All Roles
+
+                                    <span *ngIf="allAvailableRoles.length" class="ml-auto">({{allAvailableRoles.length -
+                                        1}})</span>
+
+                                </mat-option>
+                                <ng-container *ngFor="let role of allAvailableRoles">
+                                    <mat-option [value]="role.name">
+                                        {{role.name}} <span class="ml-auto">({{role.count}})</span>
+                                    </mat-option>
+                                </ng-container>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <!-- end  -->
+                </div>
+
+                <div class="grid p-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full min-w-0">
+                    <ng-container *ngFor="let member of filteredSonicUsers">
+                        <div class="flex flex-col flex-auto items-center bg-card shadow rounded-2xl overflow-hidden">
+                            <!-- Avatar & Info -->
+                            <div class="flex flex-col flex-auto w-full p-8 text-center">
+                                <div (click)="
+                                        navigateToAccountDetails(member.id)
+                                    " class="w-32 cursor-pointer h-32 mx-auto rounded-full overflow-hidden">
+                                    <img class="w-full h-full object-cover" [src]="member.photo" />
+                                </div>
+                                <div (click)="
+                                        navigateToAccountDetails(member.id)
+                                    " class="mt-6 cursor-pointer font-medium">
+                                    {{ member.first_name }} {{ member.last_name }}
+                                </div>
+                                <div *ngIf="member.role" class="text-secondary">
+                                    {{ member.role_details.name }}
+                                </div>
+                            </div>
+                            <!-- Email & Phone -->
+                            <div class="flex items-center w-full border-t divide-x">
+                                <a class="flex flex-auto items-center justify-center py-4 hover:bg-hover"
+                                    [href]="'mailto:' + member.email">
+                                    <mat-icon class="icon-size-5 text-hint"
+                                        [svgIcon]="'heroicons_solid:envelope'"></mat-icon>
+                                    <span class="ml-2">Email</span>
+                                </a>
+                                <a class="flex flex-auto items-center justify-center py-4 hover:bg-hover"
+                                    [href]="'tel:' + member.phone">
+                                    <mat-icon class="icon-size-5 text-hint"
+                                        [svgIcon]="'heroicons_solid:phone'"></mat-icon>
+                                    <span class="ml-2">Call</span>
+                                </a>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </ng-template>
+            <!-- end cards -->
+        </mat-tab>
+
+        <!-- end Sonic Users -->
+        <!-- Add User -->
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <span class="inline-flex items-center space-x-2">
+                    <span class="">Add New Account</span>
+                </span>
+            </ng-template>
+            <!-- from -->
+            <ng-template matTabContent>
+                <form enctype="multipart/form-data" [formGroup]="newUserForm" (ngSubmit)="createNewUser()"
+                    class="grid grid-cols-3">
+                    <!-- Avatar -->
+                    <div class="group mt-8 relative flex mx-auto flex-0 w-48 h-48 rounded-full">
+                        <div
+                            class="relative flex items-center justify-center w-40 h-40 rounded-full overflow-hidden ring-4 ring-bg-card">
+                            <div *ngIf="!imagePreview" class="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
+                            <div class="absolute inset-0 flex items-center justify-center z-20">
+                                <div>
+                                    <input id="avatar-file-input"
+                                        class="absolute h-0 w-0 opacity-0 invisible pointer-events-none" type="file"
+                                        [multiple]="false" (change)="uploadProfilePhoto($event)" accept="image/*" />
+
+                                    <label
+                                        class="flex items-center justify-center w-10 h-10 rounded-full cursor-pointer hover:bg-hover"
+                                        for="avatar-file-input" matRipple>
+                                        <mat-icon class="text-white" [svgIcon]="'heroicons_outline:camera'"></mat-icon>
+                                    </label>
+
+                                </div>
+                            </div> <img class="w-full h-full absolute object-cover" alt="Preview" *ngIf="imagePreview"
+                                [src]="imagePreview" />
+                        </div>
+                    </div>
+                    <!-- username, first_name, last_name, email, created_at, updated_at -->
+                    <div class="mt-4 col-span-2 grid grid-cols-2 gap-y-1 gap-x-4">
+                        <!-- username -->
+                        <mat-form-field class="w-full">
+                            <mat-label>Username</mat-label>
+                            <mat-icon class="icon-size-5" matPrefix [svgIcon]="'mat_solid:person'"></mat-icon>
+                            <input required matInput formControlName="username" />
+                        </mat-form-field>
+                        <!-- password -->
+                        <mat-form-field class="w-full">
+                            <mat-label>Password</mat-label>
+                            <mat-icon class="icon-size-5" matPrefix [svgIcon]="'mat_solid:lock'"></mat-icon>
+                            <input required matInput formControlName="password" />
+                        </mat-form-field>
+                        <!-- first_name -->
+                        <mat-form-field class="w-full">
+                            <mat-label>First Name</mat-label>
+                            <mat-icon class="icon-size-5" matPrefix [svgIcon]="'mat_solid:person'"></mat-icon>
+                            <input required matInput formControlName="first_name" />
+                        </mat-form-field>
+                        <!-- last_name -->
+                        <mat-form-field class="w-full">
+                            <mat-label>Last Name</mat-label>
+                            <mat-icon class="icon-size-5" matPrefix [svgIcon]="'mat_solid:person'"></mat-icon>
+                            <input required matInput formControlName="last_name" />
+                        </mat-form-field>
+                        <!-- email -->
+                        <mat-form-field class="w-full">
+                            <mat-label>Email</mat-label>
+                            <mat-icon class="icon-size-5" matPrefix [svgIcon]="'mat_solid:email'"></mat-icon>
+                            <input required matInput formControlName="email" />
+                        </mat-form-field>
+                        <!-- phone -->
+                        <mat-form-field class="w-full">
+                            <mat-label>Phone</mat-label>
+                            <mat-icon class="icon-size-5" matPrefix [svgIcon]="'mat_solid:phone'"></mat-icon>
+                            <input required matInput formControlName="phone" />
+                        </mat-form-field>
+                        <!-- submit -->
+                        <div class="col-span-2 flex flex-row items-center justify-end">
+                            <button mat-raised-button color="primary" type="submit" [disabled]="newUserForm.invalid">
+                                Create Account
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </ng-template>
+            <!-- end form -->
+        </mat-tab>
+        <!-- end Add User -->
+    </mat-tab-group>
+</div>

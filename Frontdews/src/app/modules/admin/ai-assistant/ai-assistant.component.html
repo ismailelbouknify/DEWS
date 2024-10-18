@@ -1,0 +1,134 @@
+<div class="relative flex flex-auto w-full bg-card dark:bg-transparent">
+    <mat-drawer-container class="flex-auto h-full" [hasBackdrop]="false">
+        <!-- Drawer -->
+        <mat-drawer
+            class="w-full sm:w-100 lg:border-r lg:shadow-none dark:bg-gray-900"
+            [autoFocus]="false"
+            [(opened)]="drawerOpened"
+            #drawer
+        >
+            <!-- New chat -->
+            <ng-container *ngIf="drawerComponent === 'new-chat'">
+                <chat-new-chat [drawer]="drawer"></chat-new-chat>
+            </ng-container>
+
+            <!-- Profile -->
+            <ng-container *ngIf="drawerComponent === 'settings'">
+                <app-ai-assistant-settings
+                    [drawer]="drawer"
+                ></app-ai-assistant-settings>
+            </ng-container>
+        </mat-drawer>
+
+        <!-- Drawer content -->
+
+        <mat-drawer-content class="flex overflow-hidden">
+            <!-- sidebar -->
+            <div
+                class="relative flex flex-auto flex-col w-full min-w-0 lg:min-w-100 lg:max-w-100 bg-card dark:bg-transparent"
+            >
+                <!-- header -->
+                <app-ai-assistant-header
+                    (openSettings)="openSettings()"
+                    (filterChats)="filterChats($event)"
+                    (startNewConversation)="startNewConversation()"
+                ></app-ai-assistant-header>
+                <ng-container *ngIf="allConversations.length; else noHistory">
+                    <!-- Chats -->
+                    <div class="flex-auto overflow-y-auto">
+                        <ng-container
+                            *ngIf="allConversations.length; else noChats"
+                        >
+                            <ng-container
+                                *ngFor="let conversation of allConversations"
+                            >
+                                <app-ai-assistant-sidebar-item
+                                    [conversation]="conversation"
+                                    (selectConversation)="
+                                        selectConversation($event)
+                                    "
+                                    [isSelected]="
+                                        selectedConversation &&
+                                        selectedConversation.id ===
+                                            conversation.id
+                                    "
+                                ></app-ai-assistant-sidebar-item>
+                            </ng-container>
+                        </ng-container>
+                    </div>
+                </ng-container>
+            </div>
+
+            <!-- No chats template -->
+            <ng-template #noHistory>
+                <div
+                    class="flex flex-auto flex-col items-center justify-center h-full"
+                >
+                    <mat-icon
+                        class="icon-size-24"
+                        [svgIcon]="
+                            'heroicons_outline:chat-bubble-oval-left-ellipsis'
+                        "
+                    ></mat-icon>
+                    <div
+                        class="mt-4 text-2xl font-semibold tracking-tight text-secondary"
+                    >
+                        Start New Conversation
+                    </div>
+                </div>
+            </ng-template>
+
+            <!-- main -->
+
+            <div class="flex-auto h-full">
+                <ng-container *ngIf="newConversation || selectedConversation">
+                    <div class="flex flex-col overflow-hidden">
+                        <!-- header -->
+                        <app-ai-assistant-conv-header
+                            [selectedConversation]="selectedConversation"
+                        ></app-ai-assistant-conv-header>
+                        <!-- conversations -->
+                        <div class="flex overflow-y-auto flex-col-reverse">
+                            <div
+                                class="flex flex-col flex-auto shrink p-6 bg-card dark:bg-transparent"
+                            ></div>
+                        </div>
+                        <!-- Message field -->
+                        <div
+                            class="flex items-end p-4 border-t bg-gray-50 dark:bg-transparent"
+                        >
+                            <div class="flex items-center h-11 my-px">
+                                <button class="ml-0.5" mat-icon-button>
+                                    <mat-icon
+                                        [svgIcon]="
+                                            'heroicons_outline:paper-clip'
+                                        "
+                                    ></mat-icon>
+                                </button>
+                            </div>
+                            <mat-form-field
+                                class="fuse-mat-dense fuse-mat-rounded fuse-mat-bold w-full ml-4"
+                                subscriptSizing="dynamic"
+                            >
+                                <textarea
+                                    matInput
+                                    cdkTextareaAutosize
+                                    #messageInput
+                                ></textarea>
+                            </mat-form-field>
+                            <div class="flex items-center h-11 my-px ml-4">
+                                <button mat-icon-button>
+                                    <mat-icon
+                                        [svgIcon]="
+                                            'heroicons_outline:paper-airplane'
+                                        "
+                                    ></mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </mat-drawer-content>
+    </mat-drawer-container>
+</div>

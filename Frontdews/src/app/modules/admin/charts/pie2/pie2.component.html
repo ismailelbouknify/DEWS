@@ -1,0 +1,22 @@
+<div class="w-full mt-12 grid grid-cols-2 xl:grid-cols-4">
+  <!-- First set of charts -->
+  <div class="w-full lg:w-1/2 mt-12 lg:mt-0">
+    <div class="text-2xl font-semibold tracking-tight leading-6 mb-4">Types of information</div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div *ngFor="let options of chartOptions; let i = index" class="bg-white p-6 shadow rounded-lg">
+        <apx-chart [series]="options.series" [chart]="options.chart" [labels]="options.labels"></apx-chart>
+      </div>
+    </div>
+  </div>
+
+  <!-- Second set of charts -->
+  <!-- <div class="w-full lg:w-1/2 mt-12 lg:mt-0">
+    <div class="text-2xl font-semibold tracking-tight leading-6 mb-4">Types of inputs</div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div *ngFor="let options of chartOptions; let i = index" class="bg-white p-6 shadow rounded-lg">
+        <apx-chart [series]="options.series" [chart]="options.chart" [labels]="options.labels"></apx-chart>
+      </div>
+    </div>
+  </div> -->
+
+</div>

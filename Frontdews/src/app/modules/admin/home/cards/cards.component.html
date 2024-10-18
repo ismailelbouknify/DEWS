@@ -1,0 +1,184 @@
+<div class="flex flex-wrap justify-center gap-6">
+
+
+
+
+    <!-- Card - Flippable card -->
+    <fuse-card class="flex flex-col max-w-80 w-full  filter-article filter-interactive" [flippable]="true"
+        [face]="'front'" #flippableCard01="fuseCard">
+        <ng-container fuseCardFront>
+            <img class="object-cover" src="assets/images/imagesDews/analyse.jpg" alt="Card cover image">
+            <div class="m-8 mb-4">
+                <div class="text-2xl font-semibold leading-tight">Data Analysis
+
+                </div>
+                <div class="mt-4">Analyzing student performance data requires collecting diverse information and using
+                    statistical methods to identify trends. Regular updates and predictive analytics ensure timely
+                    insights for proactive support strategies</div>
+                <div class="mt-3 -mx-3">
+                    <button class="px-3" mat-button [color]="'primary'"
+                        (click)="flippableCard01.face = flippableCard01.face === 'front' ? 'back' : 'front'">
+                        Read More
+                    </button>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container fuseCardBack>
+            <div class="flex flex-col flex-auto m-4">
+                <button class="ml-1.5" mat-icon-button
+                    (click)="flippableCard01.face = flippableCard01.face === 'front' ? 'back' : 'front'">
+                    <mat-icon [svgIcon]="'heroicons_outline:arrow-long-left'"></mat-icon>
+                </button>
+                <div class="m-4 mt-3">
+                    <div class="text-2xl font-semibold leading-tight">
+                        Data Analysis
+                    </div>
+                    <div class="mt-4">
+                        Analyzing student performance data requires collecting diverse information and using statistical
+                        methods to identify trends. Regular updates and predictive analytics ensure timely insights for
+                        proactive support strategies.
+                    </div>
+                    <div class="mt-4">
+                        Analyzing student performance data requires collecting diverse information and using statistical
+                        methods to identify trends. Regular updates and predictive analytics ensure timely insights for
+                        proactive support strategies.
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </fuse-card>
+    <fuse-card class="flex flex-col max-w-80  w-full filter-article filter-interactive" [flippable]="true"
+        [face]="'front'" #flippableCard02="fuseCard">
+        <ng-container fuseCardFront>
+            <img class="object-cover" src="assets/images/imagesDews/search.jpg" alt="Card cover image">
+            <div class="m-8 mb-4">
+                <div class="text-2xl font-semibold leading-tight">Fast search for Students
+
+                </div>
+                <div class="mt-4">AMaintaining a comprehensive student database involves accurate record-keeping and
+                    regular audits to uphold data integrity. Strict privacy measures protect student information,
+                    aligning with legal requirements like FERPA for ethical data management.</div>
+                <div class="mt-3 -mx-3">
+                    <button class="px-3" mat-button [color]="'primary'"
+                        (click)="flippableCard02.face = flippableCard02.face === 'front' ? 'back' : 'front'">
+                        Read More
+                    </button>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container fuseCardBack>
+            <div class="flex flex-col flex-auto m-4">
+                <button class="ml-1.5" mat-icon-button
+                    (click)="flippableCard02.face = flippableCard02.face === 'front' ? 'back' : 'front'">
+                    <mat-icon [svgIcon]="'heroicons_outline:arrow-long-left'"></mat-icon>
+                </button>
+                <div class="m-4 mt-3">
+                    <div class="text-2xl font-semibold leading-tight">
+                        Fast Search for Students
+                    </div>
+                    <div class="mt-4">
+                        Analyzing student performance data requires collecting diverse information and using statistical
+                        methods to identify trends. Regular updates and predictive analytics ensure timely insights for
+                        proactive support strategies.
+                    </div>
+                    <div class="mt-4">
+                        Analyzing student performance data requires collecting diverse information and using statistical
+                        methods to identify trends. Regular updates and predictive analytics ensure timely insights for
+                        proactive support strategies.
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </fuse-card>
+    <fuse-card class="flex flex-col max-w-80  w-full filter-article filter-interactive" [flippable]="true"
+        [face]="'front'" #flippableCard03="fuseCard">
+        <ng-container fuseCardFront>
+            <img class="object-cover" src="assets/images/imagesDews/models.jpg" alt="Card cover image">
+            <div class="m-8 mb-4">
+                <div class="text-2xl font-semibold leading-tight">Choose to how predict
+
+                </div>
+                <div class="mt-4">Analyzing student performance data requires collecting diverse information and using
+                    statistical methods to identify trends. Regular updates and predictive analytics ensure timely
+                    insights for proactive support strategies</div>
+                <div class="mt-3 -mx-3">
+                    <button class="px-3" mat-button [color]="'primary'"
+                        (click)="flippableCard03.face = flippableCard03.face === 'front' ? 'back' : 'front'">
+                        Read More
+                    </button>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container fuseCardBack>
+            <div class="flex flex-col flex-auto m-4">
+                <button class="ml-1.5" mat-icon-button
+                    (click)="flippableCard03.face = flippableCard03.face === 'front' ? 'back' : 'front'">
+                    <mat-icon [svgIcon]="'heroicons_outline:arrow-long-left'"></mat-icon>
+                </button>
+                <div class="m-4 mt-3">
+                    <div class="text-2xl font-semibold leading-tight">
+                        Choose How to Predict
+                    </div>
+                    <div class="mt-4">
+                        Analyzing student performance data requires collecting diverse information and using statistical
+                        methods to identify trends. Regular updates and predictive analytics ensure timely insights for
+                        proactive support strategies.
+                    </div>
+                    <div class="mt-4">
+                        Analyzing student performance data requires collecting diverse information and using statistical
+                        methods to identify trends. Regular updates and predictive analytics ensure timely insights for
+                        proactive support strategies.
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </fuse-card>
+    <fuse-card class="flex flex-col max-w-80 w-full filter-article filter-interactive" [flippable]="true"
+        [face]="'front'" #flippableCard04="fuseCard">
+        <ng-container fuseCardFront>
+            <img class="object-cover" src="assets/images/imagesDews/explaining-person-group-results-team-table.jpg"
+                alt="Card cover image">
+            <div class="m-8 mb-4">
+                <div class="text-2xl font-semibold leading-tight">Generate Repport About every Student
+
+                </div>
+                <div class="mt-4">Analyzing student performance data requires collecting diverse information and using
+                    statistical methods to identify trends. Regular updates and predictive analytics ensure timely
+                    insights for proactive support strategies</div>
+                <div class="mt-3 -mx-3">
+                    <button class="px-3" mat-button [color]="'primary'"
+                        (click)="flippableCard04.face = flippableCard04.face === 'front' ? 'back' : 'front'">
+                        Read More
+                    </button>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container fuseCardBack>
+            <div class="flex flex-col flex-auto m-4 ">
+                <button class="ml-1.5" mat-icon-button
+                    (click)="flippableCard04.face = flippableCard04.face === 'front' ? 'back' : 'front'">
+                    <mat-icon [svgIcon]="'heroicons_outline:arrow-long-left'"></mat-icon>
+                </button>
+                <div class="m-4 mt-3">
+                    <div class="text-2xl font-semibold leading-tight">
+                        Generate Repport About every Student
+                    </div>
+                    <div class="mt-4">
+                        Analyzing student performance data requires collecting diverse information and using statistical
+                        methods to identify trends. Regular updates and predictive analytics ensure timely insights for
+                        proactive support strategies.
+                    </div>
+                    <div class="mt-4">
+                        Analyzing student performance data requires collecting diverse information and using statistical
+                        methods to identify trends. Regular updates and predictive analytics ensure timely insights for
+                        proactive support strategies.
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </fuse-card>
+
+
+
+
+</div>

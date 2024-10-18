@@ -1,0 +1,11 @@
+.school-details-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.school-photo {
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+  margin: 20px 0;
+}

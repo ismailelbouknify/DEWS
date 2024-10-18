@@ -1,0 +1,65 @@
+<div class="flex flex-col max-w-240 md:min-w-160 max-h-screen -m-6">
+    <!-- Header -->
+    <div class="flex items-center justify-between h-16 pr-3 sm:pr-5 pl-6 sm:pl-8 bg-primary text-on-primary">
+        <div class="text-lg font-medium">Explore Predictions</div>
+        <!-- <button mat-icon-button class="focus:outline-none" (click)="saveAndClose()" [tabIndex]="-1">
+            <mat-icon>close</mat-icon>
+                <mat-icon class="text-current" [svgIcon]="'heroicons_outline:x-mark'"></mat-icon> 
+        </button> -->
+        <button mat-button mat-dialog-close><mat-icon fontIcon="close" class="text-white"></mat-icon></button>
+    </div>
+    <div class="grid grid-flow-col justify-stretch">
+        <!-- Compose form -->
+        <div class="p-6">
+
+            <!-- Year Selection -->
+            <div class="p-2">
+                <label for="year" class="block text-sm font-medium text-gray-700">Choose Year:</label>
+                <select id="year" [(ngModel)]="selectedYear" (change)="yearChange($event)"
+                        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <option [value]="1">After One Year</option> <!-- Change value to 1 -->
+                    <option [value]="2">After Two Years</option> <!-- Change value to 2 -->
+                </select>
+            </div>
+
+            <!-- Model Selection -->
+            <div class="p-2">
+                <label for="model" class="block text-sm font-medium text-gray-700">Choose Model:</label>
+                <select id="model" [(ngModel)]="selectedModel" (change)="modelChange($event)"
+                        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <option [value]="'model1'">Model 1</option>
+                    <option [value]="'model2'">Model 2</option>
+                </select>
+            </div>
+
+            <div class="p-2">
+                <div style="text-align: center;" class="font-medium text-gray-700">Model Descriptions:</div>
+                <div class="mt-1">
+                    <div class="mb-2">
+                        <span class="text-gray-800 font-medium">After 1 year:</span>
+                        <p class="text-gray-600"><strong>Model 1</strong> is a machine learning model that achieves a 86% overall accuracy in predicting student outcomes. It effectively identifies 28% of students at risk of dropping out, with a precision rate of 71%.</p>
+                        <p class="text-gray-600"><strong>Model 2</strong> is a machine learning model that achieves a 86% overall accuracy in predicting student outcomes. It effectively identifies 60% of students at risk of dropping out, with a precision rate of 58%.</p>
+                    </div>
+                    <hr>
+                    <div>
+                        <span class="text-gray-800 font-medium">After 2 years:</span>
+                        <p class="text-gray-600"><strong>Model 1</strong> is a machine learning model that achieves a 71% overall accuracy in predicting student outcomes. It effectively identifies 90% of students at risk of dropping out, with a precision rate of 36%.</p>
+                        <p class="text-gray-600"><strong>Model 2</strong> is a machine learning model that achieves a 82% overall accuracy in predicting student outcomes. It effectively identifies 82% of students at risk of dropping out, with a precision rate of 48%.</p>
+                    </div>
+                    <!-- Add descriptions for other models as needed -->
+                </div>
+            </div>
+            <div *ngIf="preResults && preProba" class="p-4" style="color: #177ce9;">
+                <hr> 
+                <h2 class="text-lg font-medium text-gray-900">Prediction Result</h2>
+    
+                    <p>Student ID: {{data.student_id}}</p>
+                    <p>Result: <strong>{{ preResults }}</strong></p>
+                    <p style="color: #e91745;">Dropout Probability: <strong>{{ (preProba*100).toFixed(2) }}%</strong></p>
+                    <!-- <p class="text-green-500 font-medium italic">Updated !</p> -->
+            </div>
+        </div>
+    </div>
+    <button mat-raised-button (click)="predict(data.student_id)" class="w-fit m-3 ml-auto" color="primary" >Predict</button>
+
+</div>

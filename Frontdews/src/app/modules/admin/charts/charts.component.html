@@ -1,0 +1,74 @@
+<main class="flex flex-col w-full gap-6 p-6 items-center">
+    <!-- Stats Section -->
+    <section class="w-full gap-4 grid grid-cols-1 lg:grid-cols-4 rounded-lg">
+        <div class="col-span-1 bg-white dark:bg-transparent dark:border dark:border-gray-600 rounded-lg shadow p-4 flex flex-col items-center">
+            <div class="text-7xl sm:text-8xl font-bold text-blue-500">431,875</div>
+            <div class="text-lg font-medium text-blue-600">Student</div>
+        </div>
+        <div class="col-span-1 bg-white dark:bg-transparent dark:border dark:border-gray-600 rounded-lg shadow p-4 flex flex-col items-center">
+            <div class="text-7xl sm:text-8xl font-bold text-red-500">296</div>
+            <div class="text-lg font-medium text-red-600">School</div>
+        </div>
+        <div class="col-span-1 bg-white dark:bg-transparent dark:border dark:border-gray-600 rounded-lg shadow p-4 flex flex-col items-center">
+            <div class="text-7xl sm:text-8xl font-bold text-amber-500">27,405</div>
+            <div class="text-lg font-medium text-amber-600">Class</div>
+        </div>
+        <div class="col-span-1 bg-white dark:bg-transparent dark:border dark:border-gray-600 rounded-lg shadow p-4 flex flex-col items-center">
+            <div class="text-7xl sm:text-8xl font-bold text-green-500">3</div>
+            <div class="text-lg font-medium text-green-600">Levels</div>
+        </div>
+    </section>
+
+    <!-- Donut Charts Section -->
+   
+    <section class="w-full gap-4 grid grid-cols-1 lg:grid-cols-3 rounded-lg">
+        <div class="col-span-1 bg-white dark:bg-transparent dark:border dark:border-gray-600 rounded-lg shadow p-4">
+            <h2 class="text-xl font-bold mb-4">All Students Level's Distribution</h2>
+            <app-donut1></app-donut1>
+        </div>
+        <div class="col-span-1 dark:bg-transparent dark:border dark:border-gray-600  bg-white rounded-lg shadow p-4">
+            <h2 class="text-xl font-bold mb-4">Financial Aid for Dropped Students</h2>
+            <app-semidonut></app-semidonut>
+        </div>
+        <div class="col-span-1 bg-white dark:bg-transparent dark:border dark:border-gray-600 rounded-lg shadow p-4">
+            <h2 class="text-xl font-bold mb-4">All Students Success Rate</h2>
+            <app-donut></app-donut>
+        </div>
+
+        
+    </section>
+
+    <!-- Tables Section -->
+    <section class="w-full gap-4 grid grid-cols-1 lg:grid-cols-3 rounded-lg">
+        <div class="col-span-1 bg-white dark:bg-transparent dark:border dark:border-gray-600 rounded-lg shadow p-4">
+            <h2 class="text-xl font-bold mb-4">Schools's Average Results</h2>
+            <app-baretab></app-baretab>
+        </div>
+        <div class="col-span-1 bg-white dark:bg-transparent dark:border dark:border-gray-600 rounded-lg shadow p-4">
+            <h2 class="text-xl font-bold mb-4">Schools's success rate</h2>
+            <app-baretab1></app-baretab1>
+        </div>
+        <div class="col-span-1 dark:bg-transparent dark:border dark:border-gray-600  bg-white rounded-lg shadow p-4">
+            <h2 class="text-xl font-bold mb-4"></h2>
+            <app-treemap></app-treemap>
+           
+        </div>
+    </section>
+
+    <section class="w-full gap-4 grid grid-cols-1 lg:grid-cols-3 rounded-lg">
+        <div class="col-span-1 bg-white dark:bg-transparent dark:border dark:border-gray-600 rounded-lg shadow p-4">
+            <h2 class="text-xl font-bold mb-4">Sucess and Drop Rates by Year</h2>
+            <app-barnega></app-barnega>
+        </div>
+        <div class="col-span-1 bg-white dark:bg-transparent dark:border dark:border-gray-600 rounded-lg shadow p-4">
+            <h2 class="text-xl font-bold mb-4">All Students's Gender Distrubition</h2>
+            <app-barnega1></app-barnega1>
+        </div>
+        <div class="col-span-1  bg-white dark:bg-transparent dark:border dark:border-gray-600 rounded-lg shadow p-4">
+            <h2 class="text-xl font-bold mb-4">All Students's Absence Rate</h2>
+     
+            <app-baretab2></app-baretab2>
+        </div>
+    </section>
+
+</main>

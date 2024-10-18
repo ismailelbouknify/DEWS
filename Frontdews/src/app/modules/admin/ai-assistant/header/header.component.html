@@ -1,0 +1,88 @@
+<div
+    class="flex flex-col flex-0 py-4 px-8 border-b bg-gray-50 dark:bg-transparent"
+>
+    <div class="flex items-center">
+        <div
+            class="flex items-center mr-1 cursor-pointer"
+            (click)="onOpenSettings()"
+        >
+            <div class="w-10 h-10">
+                <button mat-icon-button>
+                    <mat-icon [svgIcon]="'mat_outline:settings'"></mat-icon>
+                </button>
+            </div>
+        </div>
+        <button
+            class="ml-auto"
+            mat-icon-button
+            (click)="onStartNewConversation()"
+        >
+            <mat-icon [svgIcon]="'heroicons_outline:plus-circle'"></mat-icon>
+        </button>
+        <button
+            class="ml-1 -mr-4"
+            mat-icon-button
+            [matMenuTriggerFor]="chatsHeaderMenu"
+        >
+            <mat-icon
+                [svgIcon]="'heroicons_outline:ellipsis-vertical'"
+            ></mat-icon>
+            <mat-menu #chatsHeaderMenu>
+                <button mat-menu-item>
+                    <mat-icon
+                        [svgIcon]="'heroicons_outline:user-group'"
+                    ></mat-icon>
+                    New group
+                </button>
+                <button mat-menu-item>
+                    <mat-icon
+                        [svgIcon]="'heroicons_outline:chat-bubble-left-right'"
+                    ></mat-icon>
+                    Create a room
+                </button>
+                <button mat-menu-item (click)="onOpenSettings()">
+                    <mat-icon
+                        [svgIcon]="'heroicons_outline:user-circle'"
+                    ></mat-icon>
+                    Profile
+                </button>
+                <button mat-menu-item>
+                    <mat-icon
+                        [svgIcon]="'heroicons_outline:archive-box'"
+                    ></mat-icon>
+                    Archived
+                </button>
+                <button mat-menu-item>
+                    <mat-icon [svgIcon]="'heroicons_outline:star'"></mat-icon>
+                    Starred
+                </button>
+                <button mat-menu-item>
+                    <mat-icon
+                        [svgIcon]="'heroicons_outline:cog-8-tooth'"
+                    ></mat-icon>
+                    Settings
+                </button>
+            </mat-menu>
+        </button>
+    </div>
+    <!-- Search -->
+    <div class="mt-4">
+        <mat-form-field
+            class="fuse-mat-rounded fuse-mat-dense w-full"
+            [subscriptSizing]="'dynamic'"
+        >
+            <mat-icon
+                matPrefix
+                class="icon-size-5"
+                [svgIcon]="'heroicons_solid:magnifying-glass'"
+            ></mat-icon>
+            <input
+                matInput
+                [autocomplete]="'off'"
+                [placeholder]="'Search a conversation...'"
+                (input)="onFilterChats(searchField.value)"
+                #searchField
+            />
+        </mat-form-field>
+    </div>
+</div>

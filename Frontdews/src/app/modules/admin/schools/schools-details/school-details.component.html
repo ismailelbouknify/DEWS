@@ -1,0 +1,101 @@
+<div class="flex flex-col flex-auto min-w-0">
+  <!-- Header -->
+  <div class="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-6 sm:py-8 sm:px-10 border-b bg-card dark:bg-transparent">
+      <div class="flex-1 min-w-0">
+          <!-- Breadcrumbs  -->
+          <div class="flex flex-wrap items-center font-medium">
+              <div>
+                  <a class="whitespace-nowrap text-primary-500">Schools</a>
+              </div>
+              <div class="flex items-center ml-1 whitespace-nowrap">
+                  <mat-icon class="icon-size-5 text-secondary" [svgIcon]="'heroicons_mini:chevron-right'"></mat-icon>
+                  <a class="ml-1 text-primary-500"> Manage Schools </a>
+              </div>
+              <div class="flex items-center ml-1 whitespace-nowrap">
+                <mat-icon class="icon-size-5 text-secondary" [svgIcon]="'heroicons_mini:chevron-right'"></mat-icon>
+                <a class="ml-1 text-primary-500">  {{ schoolDetails.name }}</a>
+            </div>
+          </div>
+          <!-- Title -->
+          <div class="mt-2">
+              <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+                {{ schoolDetails.name }}
+              </h2>
+          </div>
+      </div>
+  </div>
+
+
+  <main class="flex flex-col w-full gap-6 p-6 items-center">
+    <!-- Stats Section -->
+    <section class="w-full gap-4 grid grid-cols-1 lg:grid-cols-3 rounded-lg">
+        <div class="col-span-1 bg-white dark:bg-transparent dark:border dark:border-gray-600 rounded-lg shadow p-4 flex flex-col items-center">
+            <div class="text-7xl sm:text-8xl font-bold text-blue-500">9417</div>
+            <div class="text-lg font-medium text-blue-600">Student</div>
+        </div>
+        <div class="col-span-1 bg-white dark:bg-transparent dark:border dark:border-gray-600 rounded-lg shadow p-4 flex flex-col items-center">
+            <div class="text-7xl sm:text-8xl font-bold text-amber-500">259</div>
+            <div class="text-lg font-medium text-amber-600">Class</div>
+        </div>
+        <div class="col-span-1 bg-white dark:bg-transparent dark:border dark:border-gray-600 rounded-lg shadow p-4 flex flex-col items-center">
+            <div class="text-7xl sm:text-8xl font-bold text-green-500">3</div>
+            <div class="text-lg font-medium text-green-600">Levels</div>
+        </div>
+    </section>
+
+    <!-- Donut Charts Section -->
+    <section class="w-full gap-4 grid grid-cols-1 lg:grid-cols-3 rounded-lg">
+      <div class="col-span-1 bg-white dark:bg-transparent dark:border dark:border-gray-600 rounded-lg shadow p-4">
+          <h2 class="text-xl font-bold mb-4"> Students Level's Distribution</h2>
+          <app-donut1></app-donut1>
+      </div>
+      <div class="col-span-1 dark:bg-transparent dark:border dark:border-gray-600  bg-white rounded-lg shadow p-4">
+          <h2 class="text-xl font-bold mb-4">Financial Aid for Dropped Students</h2>
+          <app-semidonut></app-semidonut>
+      </div>
+      <div class="col-span-1 bg-white dark:bg-transparent dark:border dark:border-gray-600 rounded-lg shadow p-4">
+          <h2 class="text-xl font-bold mb-4"> Students Success Rate</h2>
+          <app-donut></app-donut>
+      </div>
+
+      
+  </section>
+
+  <!-- Tables Section -->
+  <section class="w-full gap-4 grid grid-cols-1 lg:grid-cols-3 rounded-lg">
+      <div class="col-span-1 bg-white dark:bg-transparent dark:border dark:border-gray-600 rounded-lg shadow p-4">
+          <h2 class="text-xl font-bold mb-4">Level's Average Results</h2>
+          <app-baretab></app-baretab>
+      </div>
+      <div class="col-span-1 dark:bg-transparent dark:border dark:border-gray-600  bg-white rounded-lg shadow p-4">
+        <h2 class="text-xl font-bold mb-4">Boarding School for Dropped Students</h2>
+        <app-semidonut1></app-semidonut1>
+       
+    </div>
+      <div class="col-span-1 bg-white dark:bg-transparent dark:border dark:border-gray-600 rounded-lg shadow p-4">
+          <h2 class="text-xl font-bold mb-4">Level's success rate</h2>
+          <app-baretab1></app-baretab1>
+      </div>
+     
+  </section>
+
+  <section class="w-full gap-4 grid grid-cols-1 lg:grid-cols-3 rounded-lg">
+      <div class="col-span-1 bg-white dark:bg-transparent dark:border dark:border-gray-600 rounded-lg shadow p-4">
+          <h2 class="text-xl font-bold mb-4">Sucess and Drop Rates by Year</h2>
+          <app-barnega></app-barnega>
+      </div>
+      <div class="col-span-1 bg-white dark:bg-transparent dark:border dark:border-gray-600 rounded-lg shadow p-4">
+          <h2 class="text-xl font-bold mb-4"> Students's Gender Distrubition</h2>
+          <app-barnega1></app-barnega1>
+      </div>
+      <div class="col-span-1  bg-white dark:bg-transparent dark:border dark:border-gray-600 rounded-lg shadow p-4">
+          <h2 class="text-xl font-bold mb-4"> Levels's Absence Rate</h2>
+   
+          <app-baretab2></app-baretab2>
+      </div>
+  </section>
+
+
+</main>
+
+</div>

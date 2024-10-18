@@ -1,0 +1,23 @@
+/* Style the dropdown options */
+option:hover {
+    cursor: pointer;
+}
+
+/* Style the tooltip */
+option::after {
+    content: attr(title);
+    display: none;
+    position: absolute;
+    background-color: #000;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    z-index: 1;
+    white-space: nowrap;
+    font-size: 12px;
+    transform: translateY(-100%);
+}
+
+option:hover::after {
+    display: block;
+}

@@ -1,0 +1,85 @@
+<div class="flex flex-col max-w-300 md:min-w-200 max-h-screen -m-6">
+
+    <!-- Header -->
+    <div class="flex flex-0 items-center justify-between h-16 pr-3 sm:pr-5 pl-6 sm:pl-8 bg-accent text-on-primary">
+
+        <div class="text-lg font-medium">
+            
+            <ng-container *ngIf="!_edit" >New Client</ng-container>
+            <ng-container *ngIf="_edit" >Edit Client</ng-container>
+
+        </div>
+
+        <button
+            mat-icon-button
+            (click)="saveAndClose()"
+            [tabIndex]="-1">
+            <mat-icon
+                class="text-current"
+                [svgIcon]="'heroicons_outline:x-mark'"></mat-icon>
+        </button>
+    </div>
+
+    <div class="flex flex-col p-8 pt-4">
+
+        <form [formGroup]="createForm" class="flex flex-col items-start">
+            <div class="flex items-center w-full mt-4">
+                <mat-form-field class="w-1/2 pr-2" [subscriptSizing]="'dynamic'">
+                    <mat-label>Name</mat-label>
+                    <input matInput [formControlName]="'name'">
+                </mat-form-field>
+
+                <mat-form-field class="w-1/2 pr-2" [subscriptSizing]="'dynamic'">
+                    <mat-label>Email</mat-label>
+                    <input matInput [formControlName]="'email'">
+                </mat-form-field>
+            </div>
+
+            <div class="flex items-center w-full mt-4">
+                <mat-form-field class="w-1/2 pr-2" [subscriptSizing]="'dynamic'">
+                    <mat-label>Phone</mat-label>
+                    <input matInput [formControlName]="'phone'">
+                </mat-form-field>
+
+                <mat-form-field class="w-1/2 pr-2" [subscriptSizing]="'dynamic'">
+                    <mat-label>Adress</mat-label>
+                    <input matInput [formControlName]="'adress'">
+                </mat-form-field>
+            </div>
+
+            <div class="flex items-center w-full mt-4">
+                <mat-form-field class="w-1/2 pr-2" [subscriptSizing]="'dynamic'">
+                    <mat-label>Country</mat-label>
+                    <input matInput [formControlName]="'country'">
+                </mat-form-field>
+
+                <mat-form-field class="w-1/2 pr-2" [subscriptSizing]="'dynamic'">
+                    <mat-label>Organization</mat-label>
+                    <input matInput [formControlName]="'organization'">
+                </mat-form-field>
+            </div>
+
+          
+         
+
+       
+
+
+              
+
+
+            <div class="flex items-center mt-4  justify-end w-full">
+                <button class="sm:mx-3" mat-stroked-button (click)="saveAndClose()">
+                    <span>Cancel</span>
+                </button>
+                <button mat-flat-button [color]="'primary'" (click)="onSave()"  [disabled]="!(createForm.valid)">
+                    <span *ngIf="!_edit">Save</span>
+                    <span *ngIf="_edit">Edit</span>
+
+                </button>
+            </div>
+            
+    </form>
+
+    </div>
+</div>

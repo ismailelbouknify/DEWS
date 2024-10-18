@@ -1,0 +1,47 @@
+<div
+    class="flex flex-0 items-center h-18 px-4 md:px-6 border-b bg-gray-50 dark:bg-transparent"
+>
+    <div class="flex items-center ml-2 lg:ml-0 mr-2 cursor-pointer">
+        <div class="relative flex flex-0 items-center justify-center w-10 h-10">
+            <img
+                class="w-full h-full rounded-full object-cover"
+                src="/assets/images/avatars/ai-assistant.svg"
+                alt="Contact avatar"
+            />
+        </div>
+        <div class="ml-4 text-lg font-medium leading-5 truncate">
+            {{ selectedConversation?.title || "New conversation" }}
+        </div>
+    </div>
+    <button
+        class="ml-auto"
+        mat-icon-button
+        [matMenuTriggerFor]="conversationHeaderMenu"
+    >
+        <mat-icon [svgIcon]="'heroicons_outline:ellipsis-vertical'"></mat-icon>
+        <mat-menu #conversationHeaderMenu>
+            <button mat-menu-item>
+                <mat-icon
+                    [svgIcon]="'heroicons_outline:check-circle'"
+                ></mat-icon>
+                Select messages
+            </button>
+            <button mat-menu-item>
+                <ng-container>
+                    <mat-icon
+                        [svgIcon]="'heroicons_outline:speaker-x-mark'"
+                    ></mat-icon>
+                    Mute notifications
+                </ng-container>
+            </button>
+            <button mat-menu-item>
+                <mat-icon [svgIcon]="'heroicons_outline:backspace'"></mat-icon>
+                Clear messages
+            </button>
+            <button mat-menu-item>
+                <mat-icon [svgIcon]="'heroicons_outline:trash'"></mat-icon>
+                Delete chat
+            </button>
+        </mat-menu>
+    </button>
+</div>

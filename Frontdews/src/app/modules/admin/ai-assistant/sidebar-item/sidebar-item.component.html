@@ -1,0 +1,26 @@
+<div
+    class="z-20 flex items-center py-5 px-8 cursor-pointer border-b"
+    [ngClass]="{
+        'hover:bg-gray-100 dark:hover:bg-hover': !isSelected,
+        'bg-gray-100 dark:bg-hover': isSelected
+    }"
+    (click)="onSelectConversation(conversation.id)"
+>
+    <div class="min-w-0 ml-4">
+        <div class="font-medium text-xl leading-5 truncate">
+            {{ conversation.title }}
+        </div>
+        <div
+            class="leading-5 mt-2 truncate text-secondary"
+            [class.text-primary]="true"
+            [class.dark:text-primary-500]="true"
+        >
+            {{ conversation?.history.length }} messages
+        </div>
+    </div>
+    <div class="flex flex-col items-end self-start ml-auto pl-2">
+        <div class="text-sm leading-5 text-secondary">
+            {{ conversation.created_at | date : "short" }}
+        </div>
+    </div>
+</div>
