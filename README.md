@@ -163,6 +163,7 @@ Make sure Elasticsearch is properly configured and running before starting the b
 1. **Start the development server:**
    
    ```bash
+   cd /Dews/BackendDews/backend_dews
    python manage.py runserver
    ```
 
@@ -195,10 +196,11 @@ Here is an organized structure for your GitHub repository:
 
 ```
 DEWS/
-├── Backend/                  # Backend Django application
-│   ├── manage.py             # Django management script
-│   ├── requirements.txt      # Backend dependencies
-│   └── ...                   # Other backend files and folders
+├── BackendDews                  # Backend Django application
+│   └── backend_dews
+│       ├── manage.py             # Django management script
+│       ├── requirements.txt      # Backend dependencies
+│       └── ...                   # Other backend files and folders
 |
 ├── Frontend/                 # Frontend Angular application
 │   ├── package.json          # Frontend dependencies
