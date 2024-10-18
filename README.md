@@ -178,13 +178,13 @@ You can launch the frontend interface, which is implemented using Angular, by fo
 
    ```bash
    cd Frontend/
-   npm run install
+   npm install
    ```
 
 2. **Start the development server:**
 
    ```bash
-   npm start
+   npm run start
    ```
 
 This will launch the frontend interface, and you can access it in your browser at `http://localhost:4200`.
