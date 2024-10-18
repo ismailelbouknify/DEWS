@@ -178,7 +178,7 @@ You can launch the frontend interface, which is implemented using Angular, by fo
 1. **Install the required dependencies:**
 
    ```bash
-   cd Frontend/
+   cd /Dews/Frontend/
    npm install
    ```
 
