@@ -75,8 +75,8 @@ To run Elasticsearch, you need to set up a Docker container for it.
 1. **Clone the repository:**
    
    ```bash
-   git clone https://github.com/ismailelbouknify/DEWS.git
-   cd DEWS
+   git clone https://github.com/ismailelbouknify/DEWS_full.git
+   cd DEWS_full
    ```
 
 #### Step 4: Install Dependencies
@@ -98,7 +98,7 @@ This section provides step-by-step instructions for running the data processing 
    The `Cleaning.py` script is used to clean raw data. This script handles tasks such as removing duplicates, filling missing values, and normalizing data formats.
 
    ```bash
-   python Dews/Data_cleaning/Cleaning.py
+   python DEWS_full/Data_cleaning/Cleaning.py
    ```
 
 2. **Run the Data Aggregation Script:**
@@ -106,7 +106,7 @@ This section provides step-by-step instructions for running the data processing 
    After cleaning the data, run the `Script_Aggregation_middle.py` script. This script performs data aggregation, such as grouping the data by certain criteria and computing statistics (e.g., sums, averages) for each group.
 
    ```bash
-   python Dews/Data_cleaning/Script_Aggregation_middle.py
+   python DEWS_full/Data_cleaning/Script_Aggregation_middle.py
    ```
 
 3. **Run the Data Joining Script:**
@@ -114,7 +114,7 @@ This section provides step-by-step instructions for running the data processing 
    Once the data has been aggregated, run the `Script_Join_data_middle.py` script to merge different datasets into one final dataset.
 
    ```bash
-   python Dews/Data_cleaning/Script_Join_data_middle.py
+   python DEWS_full/Data_cleaning/Script_Join_data_middle.py
    ```
 
 ### Elasticsearch Database Setup
@@ -132,7 +132,7 @@ This section outlines the steps for creating and storing your cleaned and joined
    Run the `createdbinference.py` script to store the joined data for inference:
 
    ```bash
-   python Dews/Data_cleaning/createdbinference.py
+   python DEWS_full/Data_cleaning/createdbinference.py
    ```
 
 #### Verifying Data in Elasticsearch
@@ -201,7 +201,7 @@ This will launch the frontend interface, and you can access it in your browser a
 Here is an organized structure for your GitHub repository:
 
 ```
-DEWS/
+DEWS_full/
 ├── Backend/                  # Backend Django application
 │   ├── manage.py             # Django management script
 │   ├── requirements.txt      # Backend dependencies
@@ -212,7 +212,7 @@ DEWS/
 │   ├── src/                  # Angular source files
 │   └── ...                   # Other frontend files and folders
 |
-├── Dews/                     # Data processing scripts
+├── DEWS_full/                     # Data processing scripts
 │   ├── Data_cleaning/
 │   │   ├── Cleaning.py
 │   │   ├── Script_Aggregation_middle.py
