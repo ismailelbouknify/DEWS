@@ -160,20 +160,13 @@ Make sure Elasticsearch is properly configured and running before starting the b
 
 ### Backend
 
-1. **Apply database migrations:**
-   
-   ```bash
-   cd Backend/
-   python manage.py migrate
-   ```
-
-2. **Start the development server:**
+1. **Start the development server:**
    
    ```bash
    python manage.py runserver
    ```
 
-3. **Access the application:**
+2. **Access the application:**
    
    Open your web browser and navigate to `http://127.0.0.1:8000/` to access the application.
 
