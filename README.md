@@ -207,12 +207,11 @@ DEWS/
 │   ├── src/                  # Angular source files
 │   └── ...                   # Other frontend files and folders
 |
-├── DEWS/                     # Data processing scripts
-│   ├── Data_cleaning/
-│   │   ├── Cleaning.py
-│   │   ├── Script_Aggregation_middle.py
-│   │   ├── Script_Join_data_middle.py
-│   │   └── createdbinference.py
+├── Data_cleaning/            # Data processing scripts
+│   ├── Cleaning.py
+│   │── Script_Aggregation_middle.py
+│   │── Script_Join_data_middle.py
+│   │── createdbinference.py
 │   └── ...
 │
 ├── README.md                 # Project documentation
