@@ -178,7 +178,7 @@ You can launch the frontend interface, which is implemented using Angular, by fo
 
    ```bash
    cd Frontend/
-   npm install
+   npm run install
    ```
 
 2. **Start the development server:**
