@@ -98,7 +98,7 @@ This section provides step-by-step instructions for running the data processing 
    The `Cleaning.py` script is used to clean raw data. This script handles tasks such as removing duplicates, filling missing values, and normalizing data formats.
 
    ```bash
-   python Dews/Data_cleaning/Cleaning.py
+   python DEWS/Data_cleaning/Cleaning.py
    ```
 
 2. **Run the Data Aggregation Script:**
@@ -106,7 +106,7 @@ This section provides step-by-step instructions for running the data processing 
    After cleaning the data, run the `Script_Aggregation_middle.py` script. This script performs data aggregation, such as grouping the data by certain criteria and computing statistics (e.g., sums, averages) for each group.
 
    ```bash
-   python Dews/Data_cleaning/Script_Aggregation_middle.py
+   python DEWS/Data_cleaning/Script_Aggregation_middle.py
    ```
 
 3. **Run the Data Joining Script:**
@@ -114,7 +114,7 @@ This section provides step-by-step instructions for running the data processing 
    Once the data has been aggregated, run the `Script_Join_data_middle.py` script to merge different datasets into one final dataset.
 
    ```bash
-   python Dews/Data_cleaning/Script_Join_data_middle.py
+   python DEWS/Data_cleaning/Script_Join_data_middle.py
    ```
 
 ### Elasticsearch Database Setup
@@ -132,7 +132,7 @@ This section outlines the steps for creating and storing your cleaned and joined
    Run the `createdbinference.py` script to store the joined data for inference:
 
    ```bash
-   python Dews/Data_cleaning/createdbinference.py
+   python DEWS/Data_cleaning/createdbinference.py
    ```
 
 #### Verifying Data in Elasticsearch
@@ -160,20 +160,14 @@ Make sure Elasticsearch is properly configured and running before starting the b
 
 ### Backend
 
-1. **Apply database migrations:**
+1. **Start the development server:**
    
    ```bash
-   cd Backend/
-   python manage.py migrate
-   ```
-
-2. **Start the development server:**
-   
-   ```bash
+   cd /Dews/BackendDews/backend_dews
    python manage.py runserver
    ```
 
-3. **Access the application:**
+2. **Access the application:**
    
    Open your web browser and navigate to `http://127.0.0.1:8000/` to access the application.
 
@@ -184,14 +178,14 @@ You can launch the frontend interface, which is implemented using Angular, by fo
 1. **Install the required dependencies:**
 
    ```bash
-   cd Frontend/
+   cd /Dews/Frontend/
    npm install
    ```
 
 2. **Start the development server:**
 
    ```bash
-   npm start
+   npm run start
    ```
 
 This will launch the frontend interface, and you can access it in your browser at `http://localhost:4200`.
@@ -202,26 +196,23 @@ Here is an organized structure for your GitHub repository:
 
 ```
 DEWS/
-├── Backend/                  # Backend Django application
-│   ├── manage.py             # Django management script
-│   ├── requirements.txt      # Backend dependencies
-│   └── ...                   # Other backend files and folders
+├── BackendDews                  # Backend Django application
+│   └── backend_dews
+│       ├── manage.py             # Django management script
+│       ├── requirements.txt      # Backend dependencies
+│       └── ...                   # Other backend files and folders
 |
 ├── Frontend/                 # Frontend Angular application
 │   ├── package.json          # Frontend dependencies
 │   ├── src/                  # Angular source files
 │   └── ...                   # Other frontend files and folders
 |
-├── Dews/                     # Data processing scripts
-│   ├── Data_cleaning/
-│   │   ├── Cleaning.py
-│   │   ├── Script_Aggregation_middle.py
-│   │   ├── Script_Join_data_middle.py
-│   │   └── createdbinference.py
+├── Data_cleaning/            # Data processing scripts
+│   ├── Cleaning.py
+│   │── Script_Aggregation_middle.py
+│   │── Script_Join_data_middle.py
+│   │── createdbinference.py
 │   └── ...
-|
-├── Docker/                   # Docker-related files
-│   └── elasticsearch/        # Elasticsearch Docker setup files
 │
 ├── README.md                 # Project documentation
 └── requirements.txt          # Project dependencies
