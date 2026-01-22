@@ -217,6 +217,7 @@ DEWS/
 ├── README.md                 # Project documentation
 └── requirements.txt          # Project dependencies
 ```
+This structure helps in keeping the backend, frontend, and data processing scripts organized, making it easier for others to understand and contribute to your project.
 
 
 ## Citation
@@ -241,4 +242,3 @@ Please cite if you use this repository
 }
 ```
 
-This structure helps in keeping the backend, frontend, and data processing scripts organized, making it easier for others to understand and contribute to your project.
