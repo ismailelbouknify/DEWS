@@ -218,4 +218,27 @@ DEWS/
 └── requirements.txt          # Project dependencies
 ```
 
+
+## Citation
+
+Please cite if you use this repository
+
+```
+@inproceedings{elbouknify2024student,
+  title={Student At-Risk Identification and Classification Through Multitask Learning: A Case Study on the Moroccan Education System},
+  author={Elbouknify, Ismail and Berrada, Ismail and Mekouar, Loubna and Iraqi, Youssef and Bergou, EL Houcine and Belhabib, Hind and Nail, Younes and Wardi, Souhail},
+  booktitle={International Conference on Artificial Intelligence in Education},
+  pages={372--380},
+  year={2024},
+  organization={Springer}
+}
+
+@article{elbouknify2025ai,
+  title={AI-based identification and support of at-risk students: A case study of the Moroccan education system},
+  author={Elbouknify, Ismail and Berrada, Ismail and Mekouar, Loubna and Iraqi, Youssef and Bergou, El Houcine and Belhabib, Hind and Nail, Younes and Wardi, Souhail},
+  journal={arXiv preprint arXiv:2504.07160},
+  year={2025}
+}
+```
+
 This structure helps in keeping the backend, frontend, and data processing scripts organized, making it easier for others to understand and contribute to your project.
